@@ -102,7 +102,7 @@ SOFTWARE.
     .Menu:not(.-alignRight) li > ul,
     .Menu.-floating:not(.-alignRight) {
         border-top-left-radius: 0px;
-        width: 30vw;
+        width: 10vw;
     }
     .Menu.-alignRight li > ul,
     .Menu.-floating.-alignRight {

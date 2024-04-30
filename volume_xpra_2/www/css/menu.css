@@ -37,6 +37,7 @@ SOFTWARE.
         display: inline-block;
         background-color: grey;
         width: 50vw;
+        transform: translateX(-50%);
     }
     ul.Menu.-floating {
         display: block;
@@ -87,10 +88,8 @@ SOFTWARE.
     }
     /* sua phan cac ul  */
     #startmenu{
-        position: relative;
-        down: -10%;
-        top: -5vh;
-        left: 30vw;
+        /* position: relative; */
+        top: 0vh;
     }
    
     /* Menu behaviour */
@@ -101,7 +100,7 @@ SOFTWARE.
     .Menu li > ul.-visible,
     ul.Menu.-floating.-visible {
         display: block;
-        position: relative;
+        /* position: relative; */
         top: -35vh;
     }
 
