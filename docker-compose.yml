@@ -1,0 +1,17 @@
+volumes:
+  volume_xpra_2:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: volume_xpra_2
+services:
+  xpra:
+    image: tswetnam/xpra:bionic
+    container_name: xpra
+    hostname: xpra
+    restart: always
+    ports:
+      - '9876:9876'
+    volumes:
+      - volume_xpra_2:/usr/share/xpra

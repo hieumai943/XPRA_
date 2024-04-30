@@ -35,6 +35,7 @@ SOFTWARE.
 ul.Menu.-horizontal,
 ul.Menu.-vertical {
   display: inline-block;
+  width: 200px;
 }
 ul.Menu.-floating {
   display: block;
@@ -121,7 +122,9 @@ ul.Menu.-floating.-visible {
 .Menu.-horizontal.-alignRight > li > ul.-animating {
   transform: scale(0.96) translateY(-16px);
 }
-
+#menu_list{
+  height: 80vw;
+}
 /* Menu item icons */
 .Menu *[data-icon]:before {
   position: absolute;
