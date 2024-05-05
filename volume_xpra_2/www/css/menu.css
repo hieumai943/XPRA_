@@ -103,7 +103,7 @@ SOFTWARE.
     ul.Menu.-floating.-visible {
         display: block;
         /* position: relative; */
-        top: -35vh;
+        top: -32vh;
     }
 
     /* Menu animation */
@@ -290,6 +290,7 @@ SOFTWARE.
     .Menu li.-active > a:first-child {
         background-color: rgba(0,0,0,0.1);
     }
+
 
 /*
 ** End configurable values
