@@ -26,10 +26,11 @@ SOFTWARE.
 #float_menu { 
     display: flex;
     justify-content: center;
-    width: 200px !important;
-	padding: 10px 50vw !important;
+    width: 100vw !important;
+	/* padding: 10px 50vw !important; */
+    padding : 12px 0 !important;
 	position: fixed;
-    background-color: grey;
+    background-color: rgba(139, 211, 230, 0.5);;
     bottom: 0px;
 }
 
@@ -82,7 +83,7 @@ SOFTWARE.
     /* Background */
     .Menu,
     .Menu li ul {
-        background: white;
+        /* background: white; */
     }
 
     /* Border */

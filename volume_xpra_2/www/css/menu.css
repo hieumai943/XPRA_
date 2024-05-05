@@ -34,10 +34,11 @@ SOFTWARE.
      */
     ul.Menu.-horizontal,
     ul.Menu.-vertical {
-        display: inline-block;
-        background-color: grey;
+        display: flex;
+        background-color: rgba(139, 211, 230, - 0.5);
         width: 50vw;
-        transform: translateX(-50%);
+        align-items: center;
+        justify-content: center;
     }
     ul.Menu.-floating {
         display: block;
@@ -64,6 +65,7 @@ SOFTWARE.
         display: inline-block;
         float: left;
         width: 20%;
+        margin: 0 20px;
     }
     .Menu li > * {
         display: block;
