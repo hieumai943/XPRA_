@@ -64,8 +64,12 @@
 	<link rel="stylesheet" href="css/simple-keyboard.css">
 </head>
 <style>
+	*{
+		font-family: 'Arial', sans-serif;
+	}
 	#start {
-		height: 100%;
+		height: 60%;
+		padding: 15%;
 	}
 
 	#startmenu .-hasSubmenu ul {
@@ -101,9 +105,9 @@
 
 	<div id="screen" style="width: 100vw; height:100%;">
 		<div id="float_menu">
-			<ul class="Menu -horizontal">
-				<li class="-hasSubmenu -noChevron">
-					<a href="#" title="Xpra" class="noDrag">
+			<ul class="Menu -horizontal" style="height: 100%;">
+				<li class="-hasSubmenu -noChevron" style="height: 100%;">
+					<a href="#" title="Xpra" class="noDrag" style="height: 100%;">
 						<img id="start" src="./icons/xpra-logo.png">
 					</a>
 					<ul id="menu_list">
@@ -161,21 +165,21 @@
 								Disconnect</a></li>
 					</ul>
 				</li>
-				<li class="-hasSubmenu -noChevron">
-					<a href="#" title="Open Windows">
-						<img id="start" src="./icons/popup.png">
+				<li class="-hasSubmenu -noChevron" style="height: 100%;">
+					<a href="#" title="Open Windows" style="height: 100%;"> 
+						<img id="start" src="./icons/folder-open.png">
 
 					</a>
 					<ul id="open_windows_list">
 					</ul>
 				</li>
-				<li class="-hasSubmenu -noChevron">
-					<a href="#" id="fullscreen_button" title="Fullscreen">
-						<img id="start" src="./icons/maximizeaximize.png">
+				<li class="-hasSubmenu -noChevron" style="height: 100%;">
+					<a href="#" id="fullscreen_button" title="Fullscreen" style="height: 100%;">
+						<img id="start" src="./icons/expand.png">
 					</a>
 				</li>
-				<li class="-hasSubmenu -noChevron">
-					<a href="#" id="keyboard_button" title="Keyboard">
+				<li class="-hasSubmenu -noChevron" style="height: 100%;">
+					<a href="#" id="keyboard_button" title="Keyboard" style="height: 100%;">
 						<img id="start" src="./icons/keyboard.png">
 					</a>
 				</li>
@@ -188,13 +192,14 @@
 					</a>
 				</li>
 				<li class="-hasSubmenu -noChevron"  style="height: 80%;"> 
-					<a href="#" id="keyboard_button" title="clock"  >
+					<!-- <a href="#" id="keyboard_button" title="clock"  >
 						<img id="start" src="./icons/clock.png">
-					</a>
+					</a> -->
+					<div id="clock" ></div>
 				</li>
 				<li class="-hasSubmenu -noChevron" style="height: 80%;">
 					<a href="#" id="calendar_button" title="Calendar">
-						<img id="start" src="./icons/calendar.png" >
+						<img id="start" src="./icons/calendar-day.png" >
 					</a>
 				</li>
 			</ul>
@@ -293,6 +298,29 @@
 	</div>
 
 	<script>
+		  var clockElement = document.getElementById('clock');
+
+function updateClock(clock) {
+	var date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	// var seconds = date.getSeconds();
+	clock.textContent = hours + ":" + minutes ;
+}
+
+setInterval(function() {
+	updateClock(clockElement);
+}, 1000);
+
+document.getElementById('start').addEventListener('click', function() {
+	var displayStyle = clockElement.style.display;
+	if (displayStyle === 'none') {
+		clockElement.style.display = 'block';
+	} else {
+		clockElement.style.display = 'none';
+	}
+});
+
 		var default_settings = {};
 		var getparam = function (prop) {
 			var v = Utilities.getparam(prop);
