@@ -69,13 +69,16 @@
 	}
 	#start {
 		height: 60%;
-		padding: 15%;
+		transform: translateY(33%);
+		margin-right: 10px;
 	}
 
 	#startmenu .-hasSubmenu ul {
 		top: 0px;
 	}
-
+	#menu_list li a {
+		display: flex;
+	}
 	.right_tb {
 		display: flex !important;
 		align-items: center;
@@ -91,6 +94,7 @@
 	.right_tb li {
 		margin: 0px 10px;
 	}
+	
 </style>
 
 <body>
@@ -113,7 +117,7 @@
 					<ul id="menu_list">
 						<li class="-hasSubmenu" style="padding: 20px 0;">
 							<a href="#">
-								<img id="start" src="./icons/windows.jpg">
+								<img id="start" src="./icons/menu-bar.png">
 								Start
 							</a>
 							<ul id="startmenu">
