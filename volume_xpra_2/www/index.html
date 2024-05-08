@@ -76,8 +76,9 @@
 	#startmenu .-hasSubmenu ul {
 		top: -6vh;
 	}
-	#menu_list li a {
+	#menu_list .firstmenu a:first-child {
 		display: flex;
+		/* padding: 10px; */
 	}
 	.right_tb {
 		display: flex !important;
@@ -87,6 +88,7 @@
 		position: absolute;
 		right: 15px;
 	}
+
 	#float_menu{
 		top: 94vh !important;
 		height: 6vh !important;
@@ -100,6 +102,10 @@
 	#startmenu .-hasSubmenu{
 		margin: 5px 0px;
 	}
+	#menu_list li:hover{
+		background-color: rgba(0,0,0,0.1);
+	}
+	
 </style>
 
 <body>
@@ -120,22 +126,21 @@
 						<img id="start" src="./icons/xpra-logo.png">
 					</a>
 					<ul id="menu_list">
-						<li class="-hasSubmenu" style="padding: 20px 0;">
-							<a href="#">
+						<li class="firstmenu -hasSubmenu" style="padding: 20px 0;">
+							<a class="bigmenu" href="#">
 								<img id="start" src="./icons/menu-bar.png">
 								Start
 							</a>
 							<ul id="startmenu">
 							</ul>
 						</li>
-						<li class="-hasSubmenu" style="padding: 22px 0;">
-							<a href="#">
+						<li class="firstmenu -hasSubmenu" style="padding:  22px 0;">
+							<a class="bigmenu" href="#">
 								<img id="start" src="./icons/server.png">
 								Server</a>
 							<ul style="position: relative;
 								down: -10%;
-								top: -5vh;
-								left: 30vw;">
+								top: -5vh;">
 								<li id="clock_menu_entry"><a href="#" data-icon="access_time" onclick="return false"
 										id="clock_menu_text"></a></li>
 								<li><a href="#" data-icon="cloud_upload"
@@ -152,14 +157,13 @@
 								</ul>
 							</li>
 							-->
-						<li class="-hasSubmenu" style="padding: 20px 0;">
-							<a href="#">
+						<li class="firstmenu -hasSubmenu" style="padding:20px 0;">
+							<a  class="bigmenu" href="#">
 								<img id="start" src="./icons/icon.png">
 								Information</a>
 							<ul style="position: relative;
 								down: -10%;
-								top: -5vh;
-								left: 30vw;">
+								top: -5vh;">
 								<li><a href="#" data-icon="info" onclick="show_about(event); return false">About
 										Xpra</a></li>
 								<li><a href="#" data-icon="trending_up"
