@@ -91,7 +91,7 @@ SOFTWARE.
     /* sua phan cac ul  */
     #startmenu{
         /* position: relative; */
-        top: 0vh;
+        top: -28vh;
     }
    
     /* Menu behaviour */
@@ -103,7 +103,7 @@ SOFTWARE.
     ul.Menu.-floating.-visible {
         display: block;
         /* position: relative; */
-        top: -29.7vh;
+        top: -30.7vh;
     }
 
     /* Menu animation */

@@ -74,7 +74,7 @@
 	}
 
 	#startmenu .-hasSubmenu ul {
-		top: 0px;
+		top: -6vh;
 	}
 	#menu_list li a {
 		display: flex;
@@ -94,7 +94,12 @@
 	.right_tb li {
 		margin: 0px 10px;
 	}
-	
+	.-hasSubmenu a .menu-divleft img{ 
+		margin-right: 10px;
+	}
+	#startmenu .-hasSubmenu{
+		margin: 5px 0px;
+	}
 </style>
 
 <body>
@@ -165,7 +170,7 @@
 						</li>
 						<li style="padding: 20px 0;"><a href="#"
 								onclick="client.disconnect_reason='User request'; client.close(); return false">
-								<img id="start" src="./icons/disconnect.png">
+								<img id="start" src="./icons/disconnected.png">
 								Disconnect</a></li>
 					</ul>
 				</li>
