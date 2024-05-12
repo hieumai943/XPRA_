@@ -69,6 +69,8 @@
 	}
 	body {
     background-image: url('./icons/bgr.png') !important; /* Replace with your preferred color */
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 	#start {
 		height: 60%;
@@ -223,6 +225,10 @@
 						<img id="start" src="./icons/keyboard.png">
 					</a>
 				</li>
+				<form id="uploadForm">
+					<input type="file" id="fileInput">
+					<button type="submit">Upload Image</button>
+				</form>
 			</ul>
 			<div id="float_tray" class="menu-divright"></div>
 		</div>
@@ -341,7 +347,22 @@ setInterval(function() {
 // 		clockElement.style.display = 'none';
 // 	}
 // });
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    var fileInput = document.getElementById('fileInput');
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append('file', file);
+
+    fetch('http://localhost:5210/render-image', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+});
 		var default_settings = {};
 		var getparam = function (prop) {
 			var v = Utilities.getparam(prop);
