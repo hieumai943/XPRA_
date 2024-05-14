@@ -64,14 +64,17 @@
 	<link rel="stylesheet" href="css/simple-keyboard.css">
 </head>
 <style>
-	*{
+	* {
 		font-family: 'Arial', sans-serif;
 	}
+
 	body {
-    background-image: url('./icons/bgr.png') !important; /* Replace with your preferred color */
-	background-repeat: no-repeat;
-	background-size: cover;
-}
+		background-image: url('./icons/bgr.png') !important;
+		/* Replace with your preferred color */
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
 	#start {
 		height: 60%;
 		transform: translateY(33%);
@@ -81,10 +84,12 @@
 	#startmenu .-hasSubmenu ul {
 		top: -6vh;
 	}
+
 	#menu_list .firstmenu a:first-child {
 		display: flex;
 		/* padding: 10px; */
 	}
+
 	.right_tb {
 		display: flex !important;
 		align-items: center;
@@ -94,25 +99,87 @@
 		right: 15px;
 	}
 
-	#float_menu{
+	#float_menu {
 		top: 94vh !important;
 		height: 6vh !important;
 	}
+
 	.right_tb li {
 		margin: 0px 10px;
 	}
-	.-hasSubmenu a .menu-divleft img{ 
+
+	.-hasSubmenu a .menu-divleft img {
 		margin-right: 10px;
 	}
-	#startmenu .-hasSubmenu{
+
+	#startmenu .-hasSubmenu {
 		margin: 5px 0px;
 	}
-	#menu_list li:hover{
-		background-color: rgba(0,0,0,0.1);
+
+	#menu_list li:hover {
+		background-color: rgba(0, 0, 0, 0.1);
 	}
-	#fullscreen_button::before{
+
+	#fullscreen_button::before {
 		display: none;
 	}
+
+	.new_menu {
+		display: none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50vw;
+		height: 60vh;
+		background-color: grey;
+	}
+
+	.new_menu form {
+		margin: 10%;
+		display: flex;
+		align-items: center;
+	}
+
+	.new_menu form button img {
+		width: 100%;
+	}
+
+	#uploadForm button {
+		padding: 10px;
+		color: #fff;
+		background-color: grey;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	#uploadForm button:hover {
+		background-color: darkgrey;
+	}
+
+	#uploadForm button img {
+		width: 20px;
+		height: 20px;
+	}
+	#fileInput {
+    display: none;
+}
+
+#fileInputLabel {
+    padding: 10px;
+    color: #fff;
+    background-color: #006e58;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#fileInputLabel:hover {
+    background-color: #90EE90;
+	color: black;
+}
 </style>
 
 <body>
@@ -127,7 +194,7 @@
 
 	<div id="screen" style="width: 100vw; height:100%;">
 		<!-- <div><img id="background" src="../css/bgr.png" style="width: 100vw;height: 100vh;position: fixed;"></div> -->
-		
+
 		<div id="float_menu">
 			<ul class="Menu -horizontal" style="height: 100%;">
 				<li class="-hasSubmenu -noChevron" style="height: 100%;">
@@ -167,7 +234,7 @@
 							</li>
 							-->
 						<li class="firstmenu -hasSubmenu" style="padding:20px 0;">
-							<a  class="bigmenu" href="#">
+							<a class="bigmenu" href="#">
 								<img id="start" src="./icons/icon.png">
 								Information</a>
 							<ul style="position: relative;
@@ -188,31 +255,31 @@
 					</ul>
 				</li>
 				<li class="-hasSubmenu -noChevron" style="height: 100%; display: none;">
-					<a href="#" title="Open Windows" style="height: 100%;"> 
+					<a href="#" title="Open Windows" style="height: 100%;">
 						<img id="start" src="./icons/folder-open.png">
 
 					</a>
 					<ul id="open_windows_list">
 					</ul>
 				</li>
-			
+
 
 			</ul>
 			<ul class="right_tb" style="height: 30px;top:10%">
 				<li class="-hasSubmenu -noChevron" style="height: 80%;">
-					<a href="#" title="Audio" >
-						<img id="start" src="./icons/volume-mute.png" style="height: 2.5vh;" >
+					<a href="#" title="Audio">
+						<img id="start" src="./icons/volume-mute.png" style="height: 2.5vh;">
 					</a>
 				</li>
-				<li class="-hasSubmenu -noChevron"  style="height: 80%;margin-top: 15px;"> 
+				<li class="-hasSubmenu -noChevron" style="height: 80%;margin-top: 15px;">
 					<!-- <a href="#" id="keyboard_button" title="clock"  >
 						<img id="start" src="./icons/clock.png">
 					</a> -->
-					<div id="clock" ></div>
+					<div id="clock"></div>
 				</li>
 				<li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
 					<a href="#" id="calendar_button" title="Calendar">
-						<img id="start" src="./icons/calendar-day.png" >
+						<img id="start" src="./icons/calendar-day.png">
 					</a>
 				</li>
 				<li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px ;">
@@ -225,10 +292,11 @@
 						<img id="start" src="./icons/keyboard.png">
 					</a>
 				</li>
-				<form id="uploadForm">
-					<input type="file" id="fileInput">
-					<button type="submit">Upload Image</button>
-				</form>
+				<li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
+					<a href="#" id="setting" title="setting" style="height: 100%;">
+						<img id="start" src="./icons/settings.png">
+					</a>
+				</li>
 			</ul>
 			<div id="float_tray" class="menu-divright"></div>
 		</div>
@@ -241,7 +309,14 @@
 	<form id="upload_form">
 		<input type="file" id="upload" style="display: none" />
 	</form>
-
+	<div class="new_menu">
+		<form id="uploadForm">
+			<input type="file" id="fileInput">
+			<label for="fileInput" id="fileInputLabel">Choose File
+			</label>
+			<button type="submit"><img src="./icons/upload.png" alt=""></button>
+		</form>
+	</div>
 	<div id="about">
 		<h2>Xpra HTML5 Client</h2>
 		<h3>Version 4.1.1</h3>
@@ -325,44 +400,70 @@
 	</div>
 
 	<script>
-		  var clockElement = document.getElementById('clock');
+		var clockElement = document.getElementById('clock');
 
-	function updateClock(clock) {
-    var date = new Date();
-    var hours = date.getHours().toString().padStart(2, '0');
-    var minutes = date.getMinutes().toString().padStart(2, '0');
-    clock.textContent = hours + ":" + minutes;
-}
+		function updateClock(clock) {
+			var date = new Date();
+			var hours = date.getHours().toString().padStart(2, '0');
+			var minutes = date.getMinutes().toString().padStart(2, '0');
+			clock.textContent = hours + ":" + minutes;
+		}
 
-setInterval(function() {
-	updateClock(clockElement);
-}, 1000);
+		setInterval(function () {
+			updateClock(clockElement);
+		}, 1000);
 
-// document.getElementById('start').addEventListener('click', function() {
-	
-// 	var displayStyle = clockElement.style.display;
-// 	if (displayStyle === 'none') {
-// 		clockElement.style.display = 'block';
-// 	} else {
-// 		clockElement.style.display = 'none';
-// 	}
-// });
-document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+		// document.getElementById('start').addEventListener('click', function() {
 
-    var fileInput = document.getElementById('fileInput');
-    var file = fileInput.files[0];
-    var formData = new FormData();
-    formData.append('file', file);
+		// 	var displayStyle = clockElement.style.display;
+		// 	if (displayStyle === 'none') {
+		// 		clockElement.style.display = 'block';
+		// 	} else {
+		// 		clockElement.style.display = 'none';
+		// 	}
+		// });
+		document.getElementById('fileInput').addEventListener('change', function() {
+			var fileInputLabel = document.getElementById('fileInputLabel');
+			var file = this.files[0];
+			if (file) {
+				fileInputLabel.textContent = file.name;
+			} else {
+				fileInputLabel.textContent = 'Choose File';
+			}
+		});
+		// click button setting
+		document.getElementById('setting').addEventListener('click', function(event) {
+			event.preventDefault();
+			var newMenu = document.querySelector('.new_menu');
+			if(newMenu.style.display === 'block') {
+				newMenu.style.display = 'none';
+				return;
+			}
+			else{
+				newMenu.style.display = 'block';
+			}
+		});
 
-    fetch('http://localhost:5210/render-image', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-});
+		document.getElementById('uploadForm').addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			var fileInput = document.getElementById('fileInput');
+			var file = fileInput.files[0];
+			var formData = new FormData();
+			formData.append('file', file);
+
+			fetch('http://localhost:5210/render-image', {
+				method: 'POST',
+				body: formData
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					location.reload();
+		}
+	)
+				.catch(error => console.error('Error:', error));
+		});
 		var default_settings = {};
 		var getparam = function (prop) {
 			var v = Utilities.getparam(prop);
