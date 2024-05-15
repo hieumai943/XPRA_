@@ -106,14 +106,14 @@ canvas {
 }
 .windowicon {
 	display: inline-block;
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 0px;
-	top: 0px;
-	overflow: hidden;
-	cursor: default;
-	background-color: transparent;
+    position: absolute;
+    width: 35px;
+    height: 30px;
+    left: 0.5%;
+    top: 0.5%;
+    overflow: hidden;
+    cursor: default;
+    background-color: transparent;
 }
 .windowtitle {
 	display: inline-block;

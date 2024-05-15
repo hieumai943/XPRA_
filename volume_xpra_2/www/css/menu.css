@@ -102,8 +102,9 @@ SOFTWARE.
     .Menu li > ul.-visible,
     ul.Menu.-floating.-visible {
         display: block;
-        /* position: relative; */
-        top: -33.7vh;
+        position: relative;
+        top: calc(-280px - 6vh);
+        z-index: 9999;
     }
 
     /* Menu animation */

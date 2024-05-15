@@ -32,6 +32,7 @@ SOFTWARE.
 	position: fixed;
     background-color: rgba(139, 211, 230, 0.5);;
     bottom: 0px;
+    z-index: 9999;
 }
 
 .menu-divleft {

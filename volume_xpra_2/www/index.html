@@ -132,15 +132,31 @@
 		transform: translate(-50%, -50%);
 		width: 50vw;
 		height: 60vh;
-		background-color: grey;
+		background-color: white;
+		z-index: 9998;
+		border-radius: 5px;
 	}
 
 	.new_menu form {
-		margin: 10%;
 		display: flex;
 		align-items: center;
+		position: absolute;
+		top: 10%;
+		left: 50%;
 	}
 
+	span.left {
+		position: absolute;
+		top: 9%;
+		font-size: 20px;
+		padding: 2% 5%;
+	}
+	span.left:hover{
+		background-color: #ccc;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+		cursor: pointer;
+	}
 	.new_menu form button img {
 		width: 100%;
 	}
@@ -180,9 +196,29 @@
     background-color: #90EE90;
 	color: black;
 }
+#fadeBackground{
+	display: none; z-index: 1;
+	width: 100vw;
+	height: 100vh; 
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.windowicon {
+	display: inline-block;
+    position: absolute;
+    width: 35px;
+    height: 30px;
+    left: 0.5%;
+    top: 0.5%;
+    overflow: hidden;
+    cursor: default;
+    background-color: transparent;
+}
 </style>
 
 <body>
+	<div id="fadeBackground">
+		<!-- Nội dung của màn hình ở đây -->
+	</div>
 	<div id="dpi" style="width: 1in; height: 1in; left: -100%; top: -100%; position: absolute;">
 	</div>
 
@@ -310,6 +346,7 @@
 		<input type="file" id="upload" style="display: none" />
 	</form>
 	<div class="new_menu">
+		<span class="left">Change Background</span>
 		<form id="uploadForm">
 			<input type="file" id="fileInput">
 			<label for="fileInput" id="fileInputLabel">Choose File
@@ -400,6 +437,28 @@
 	</div>
 
 	<script>
+		var liElement = document.querySelector('.right_tb li #setting').addEventListener('click', function(event) {
+			console.log('click');
+			var menuList = document.querySelector(".new_menu");
+		var style = window.getComputedStyle(menuList);
+		if (style.display === 'block') {
+			document.getElementById('fadeBackground').style.display = 'none';
+		}
+		else  {
+			document.getElementById('fadeBackground').style.display = 'block';
+		}
+		});
+		
+		document.querySelector("span.left").addEventListener('click', function(event) {
+			var formFile = document.querySelector(".new_menu form");
+			var style = window.getComputedStyle(formFile);
+			if (style.display === 'block') {
+				formFile.style.display = 'none';
+			}
+			else  {
+				formFile.style.display = 'block';
+			}
+		});
 		var clockElement = document.getElementById('clock');
 
 		function updateClock(clock) {
@@ -440,7 +499,7 @@
 				return;
 			}
 			else{
-				newMenu.style.display = 'block';
+				newMenu.style.display = 'flex';
 			}
 		});
 
