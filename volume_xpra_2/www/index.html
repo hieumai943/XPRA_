@@ -79,7 +79,7 @@
 	}
 
 	#start {
-		height: 60%;
+		height: 72%;
 		transform: translateY(33%);
 		margin-right: 10px;
 	}
@@ -367,7 +367,6 @@
 	.calendar-body li {
 		width: calc(100% / 7);
 		font-size: 1.07rem;
-		color: #414141;
 	}
 
 	.calendar-body .calendar-weekdays li {
@@ -409,7 +408,7 @@
 	.calendar-dates li:not(.active):hover::before {
 		background: #e4e1e1;
 	}
-
+	
 	/* end calendar space  */
 </style>
 
@@ -433,12 +432,12 @@
 			<ul class="Menu -horizontal" style="height: 100%;">
 				<li class="-hasSubmenu -noChevron" style="height: 100%;">
 					<a href="#" title="Xpra" class="noDrag" style="height: 100%;">
-						<img id="start" src="./icons/xpra-logo.png">
+						<img id="start" class="startLogo" src="./icons/xpra-logo.png">
 					</a>
 					<ul id="menu_list">
 						<li class="firstmenu -hasSubmenu" style="padding: 20px 0;">
 							<a class="bigmenu" href="#">
-								<img id="start" src="./icons/menu-bar.png">
+								<img id="start"  src="./icons/menu-bar.png">
 								Start
 							</a>
 							<ul id="startmenu">
@@ -500,16 +499,16 @@
 
 			</ul>
 			<ul class="right_tb" style="height: 30px;top:10%">
-				<li class="-hasSubmenu -noChevron" style="height: 80%;">
+				<!-- <li class="-hasSubmenu -noChevron" style="height: 80%;">
 					<a href="#" title="Audio">
 						<img id="start" src="./icons/volume-mute.png" style="height: 2.5vh;">
 					</a>
-				</li>
+				</li> -->
 				<li class="-hasSubmenu -noChevron" style="height: 80%;margin-top: 15px;">
 					<!-- <a href="#" id="keyboard_button" title="clock"  >
 						<img id="start" src="./icons/clock.png">
 					</a> -->
-					<div id="clock"></div>
+					<div id="clock" style="font-size: 24px;"></div>
 				</li>
 				<li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
 					<a href="#" id="calendar_button" title="Calendar">
@@ -551,7 +550,7 @@
 			<input type="file" id="fileInput">
 			<label for="fileInput" id="fileInputLabel">Choose File
 			</label>
-			<button type="submit"><img src="./icons/upload.png" alt=""></button>
+			<button type="submit" style="margin-left:10px ;"><img src="./icons/upload.png" alt=""></button>
 		</form>
 		<span class="theme">Dark Mode</span>
 		<form id="theme">
@@ -672,6 +671,78 @@
 	</div>
 	<!-- end space -->
 	<script>
+		let count  = 0;
+		document.querySelector('span.slider').addEventListener('click', function (event) {
+			// day la doan xu ly theme
+			count ++;
+			if (count % 2 == 0) {
+			//theme light
+			document.getElementById('float_menu').style.backgroundColor = 'rgba(139, 211, 230, 0.5)';
+			document.querySelector('.new_menu').style.backgroundColor = 'white'; 
+			document.querySelector('li #calendar_button img').src = './icons/calendar-day.png';
+			document.getElementById('clock').style.color = 'black';
+			document.querySelector('.startLogo').src = './icons/xpra-logo.png';
+			document.querySelector('li #fullscreen_button img').src = './icons/expand.png';
+			document.querySelector('li #keyboard_button img').src = './icons/keyboard.png';
+			document.querySelector('li #setting img').src = './icons/settings.png';
+			document.querySelector('.new_menu #exitmenu img').src = './icons/logout.png';
+			document.querySelector('.calendar-container').style.backgroundColor = 'white';
+			document.querySelector('.calendar-container').style.color = 'black';
+			document.getElementById('menu_list').style.backgroundColor = 'white';
+			document.getElementById('menu_list').style.color = 'black';
+			var elements = document.querySelectorAll('#menu_list li ul');
+			elements.forEach(function(element) {
+				element.style.backgroundColor = 'white';
+			});
+			var elements = document.querySelectorAll('#startmenu li ul');
+			elements.forEach(function(element) {
+				element.style.backgroundColor = 'white';
+			});
+			}	
+			else {
+			//theme dark
+			document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; 
+			document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f'; 
+			document.querySelector('li #calendar_button img').src = './icons/calendar_light.png';
+			document.getElementById('clock').style.color = 'white';
+			document.querySelector('.startLogo').src = './icons/xpra-logo_light.png';
+			document.querySelector('li #fullscreen_button img').src = './icons/expand_light.png';
+			document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
+			document.querySelector('li #setting img').src = './icons/setting_light.png';
+			document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
+			document.querySelector('.calendar-container').style.backgroundColor = 'black';
+			document.querySelector('.calendar-container').style.color = 'white';
+			document.getElementById('menu_list').style.backgroundColor = 'black';
+			document.getElementById('menu_list').style.color = 'white';
+			var elements = document.querySelectorAll('#menu_list li ul');
+			elements.forEach(function(element) {
+				element.style.backgroundColor = 'black';
+			});
+			var elements = document.querySelectorAll('#menu_list li ul');
+			elements.forEach(function(element) {
+				element.style.backgroundColor = 'black';
+			});
+			var elements = document.querySelectorAll('#startmenu li ul');
+			elements.forEach(function(element) {
+				element.style.backgroundColor = 'black';
+			});
+			}
+		});
+		// xu ly phan icon duoi taskbar
+		document.querySelector('.Menu').addEventListener('click', function (event) {
+			var elements = document.querySelectorAll('#startmenu li ul li');
+			elements.forEach(function(element) {
+				element.addEventListener('click', function (event) {
+					// console.log(element.querySelector('div img').src );
+					var newListItem = document.createElement('li');
+					var icon = element.querySelector('div img');
+					var iconCopy = icon.cloneNode(true);
+					newListItem.appendChild(iconCopy);
+					document.querySelector('.Menu.-horizontal').appendChild(newListItem);
+				})
+			});
+		});
+		
 		// calendar space
 		let date = new Date();
 		let year = date.getFullYear();
