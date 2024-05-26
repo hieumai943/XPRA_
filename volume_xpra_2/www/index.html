@@ -671,6 +671,8 @@
 	</div>
 	<!-- end space -->
 	<script>
+			
+				
 		let count  = 0;
 		document.querySelector('span.slider').addEventListener('click', function (event) {
 			// day la doan xu ly theme
@@ -729,20 +731,31 @@
 			}
 		});
 		// xu ly phan icon duoi taskbar
-		document.querySelector('.Menu').addEventListener('click', function (event) {
-			var elements = document.querySelectorAll('#startmenu li ul li');
-			elements.forEach(function(element) {
-				element.addEventListener('click', function (event) {
-					// console.log(element.querySelector('div img').src );
-					var newListItem = document.createElement('li');
-					var icon = element.querySelector('div img');
-					var iconCopy = icon.cloneNode(true);
-					newListItem.appendChild(iconCopy);
-					document.querySelector('.Menu.-horizontal').appendChild(newListItem);
-				})
-			});
-		});
+
+document.querySelector('img#start').addEventListener('click', function (event) {
+    var elements = document.querySelectorAll('#startmenu li ul li');
+	elements.forEach(function(element) {
+    element.addEventListener('click', function (event) {
+        var image = document.createElement('img');
+        var newListItem = document.createElement('li');
+        var icon = element.querySelector('div img');
+        var iconCopy = icon.cloneNode(true);
+        newListItem.appendChild(iconCopy);
+
+        var menu = document.querySelector('.Menu.-horizontal');
+        var children = Array.from(menu.children);
+        var doesExist = children.some(function(child) {
+            return child.innerHTML === newListItem.innerHTML;
+        });
+
+        if (!doesExist) {
+            menu.appendChild(newListItem);
+        }
+    })
+});
+});
 		
+
 		// calendar space
 		let date = new Date();
 		let year = date.getFullYear();
@@ -869,6 +882,7 @@
 				calendar.style.display = 'block';
 			}
 		});
+		
 		// end calendar space
 		document.getElementById('exitmenu').addEventListener('click', function (event) {
 			event.preventDefault();
@@ -2016,6 +2030,13 @@
 			};
 			xhr.send();
 		});
+			// xu ly phan tat ung dung di thi mat thanh tren thanh taskbar
+		// 	var elements = document.querySelectorAll('canvas');
+		// elements.array.forEach(function(element) {
+		// 	element.addEventListener('click', function (event) {
+		// 		element.style.display = 'none';
+		// 	})
+		// });
 	</script>
 </body>
 
