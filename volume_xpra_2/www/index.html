@@ -63,8 +63,7 @@
 	<script type="application/javascript" src="js/lib/simple-keyboard.js"></script>
 	<link rel="stylesheet" href="css/simple-keyboard.css">
 	<link rel="stylesheet"
-	href=
-"https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <style>
 	* {
@@ -408,7 +407,7 @@
 	.calendar-dates li:not(.active):hover::before {
 		background: #e4e1e1;
 	}
-	
+
 	/* end calendar space  */
 </style>
 
@@ -437,7 +436,7 @@
 					<ul id="menu_list">
 						<li class="firstmenu -hasSubmenu" style="padding: 20px 0;">
 							<a class="bigmenu" href="#">
-								<img id="start"  src="./icons/menu-bar.png">
+								<img id="start" src="./icons/menu-bar.png">
 								Start
 							</a>
 							<ul id="startmenu">
@@ -669,92 +668,118 @@
 			<ul class="calendar-dates"></ul>
 		</div>
 	</div>
+	<div id="7"
+		class="undecorated wmclass-Nautilus window-NORMAL border ui-draggable ui-draggable-handle ui-resizable wmclass-nautilus windowinfocus"
+		style="width: 894px; height: 595px; left: 10px; top: 95px; z-index: 7502;">
+		<div id="spinner7" class="spinneroverlay">
+			<div class="spinnermiddle">
+				<div class="spinner"></div>
+			</div>
+		</div>
+		<div id="head7" class="windowhead" style="display: none;"> <span class="windowicon"><img id="windowicon7"
+					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAC90lEQVR4nLWVv2scRxTHP7O7d/LplJyx79IcamyIVEQKwSa4UJMipEjKpJZCmrg6VAmBUKFGINJY/4DUpHJjBCkMyV+gS2EOhEkTghCSIAc2udu93fnlQjvr3b2VECF5MMy725nvZ96bmTfwP5twzsrKyleHh4e/1Ot13/d9PM9DCIExBmMMWmuUUmitC36+V0qRJIne3Nz8ut/vvywAjo6O+svLy4+EELgGYK3FWgtQgFlr0Vpnv/P9ycnJ72tra48BAgcwxiwNBoP/JC2tVmvJ+RnAWltfX18nDEMAlsTfzAhzK8HYegxsG4Bms8ne3l59CqC1zsR/6LyhFXiAd6Pww7t36czOXkG04ftXCePxGK11NiYDKKUA+G3vGz5qN7MBKkr44+df0VEyBQi8bAuZ8T1mPFD6vVYl4F4wRL0ZFoQ+/vaTGyNxdvhFyHc/vaoGuLCivwbce9q/lWDZ7u8/LmgVAI46/HOO8x8/B8CrBYhcGipNCLx6LfXngFF1BFJKrLW0v3xCba7xryLQscS+eI6UchoQxzH7+/vITz9Dlib6vk8QBARBkPme51Xe5GfPVjg/P68GdDodLi8vsdZijCGO4+wmG2MKfdV/xhiSJCGO4+oUBUGQlQE3SSl1o2D5mxCiOkVSSqSUU5MWFhaYTS9T2cbjMcfHx1OwawFutfkVjkYjNjY2mEwmBfFGo8HW1lZW4PLzkiSZBiRJkp2k/OAoimi32+zs7OD7/tVp0Zrt7W2iKEIpNRV1JcBFUF6N1pput8vFxUUB0O12s9NTjvrae+AiyA/WWjM/P0+v18OYq+rqeR6rq6vZ41NeVOUeXJeiMAxZXFxkd3d3apOHw+GtUuQD/mg0equ1bpWP6dnZGaenp7e6CwBCCMIwfAvUgUSkgAbw4cHBwetms/mBo7un0ln5jXZ+HhaG4T+9Xu8BMAEiV8lqKeRO2mZyrZ5+D3j/AhlAARJIgDjXJk4ckNeVSj8VrLkUpuJ5gAF02mQK1GWhd29jy/AGn976AAAAAElFTkSuQmCC"></span>
+			<span class="windowtitle" id="title7" style="left: 32px;">Home</span> <span class="windowbuttons"> <span
+					id="minimize7"><img src="icons/minimize.png"></span> <span id="maximize7"><img
+						src="icons/maximize.png"></span> <span id="close7"><img src="icons/close.png"></span> </span>
+		</div><canvas width="894" height="594"></canvas>
+		<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+		</div>
+		<div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+		<div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+	</div>
+
 	<!-- end space -->
 	<script>
-			
-				
-		let count  = 0;
+
+
+		let count = 0;
 		document.querySelector('span.slider').addEventListener('click', function (event) {
 			// day la doan xu ly theme
-			count ++;
+			count++;
 			if (count % 2 == 0) {
-			//theme light
-			document.getElementById('float_menu').style.backgroundColor = 'rgba(139, 211, 230, 0.5)';
-			document.querySelector('.new_menu').style.backgroundColor = 'white'; 
-			document.querySelector('li #calendar_button img').src = './icons/calendar-day.png';
-			document.getElementById('clock').style.color = 'black';
-			document.querySelector('.startLogo').src = './icons/xpra-logo.png';
-			document.querySelector('li #fullscreen_button img').src = './icons/expand.png';
-			document.querySelector('li #keyboard_button img').src = './icons/keyboard.png';
-			document.querySelector('li #setting img').src = './icons/settings.png';
-			document.querySelector('.new_menu #exitmenu img').src = './icons/logout.png';
-			document.querySelector('.calendar-container').style.backgroundColor = 'white';
-			document.querySelector('.calendar-container').style.color = 'black';
-			document.getElementById('menu_list').style.backgroundColor = 'white';
-			document.getElementById('menu_list').style.color = 'black';
-			var elements = document.querySelectorAll('#menu_list li ul');
-			elements.forEach(function(element) {
-				element.style.backgroundColor = 'white';
-			});
-			var elements = document.querySelectorAll('#startmenu li ul');
-			elements.forEach(function(element) {
-				element.style.backgroundColor = 'white';
-			});
-			}	
+				//theme light
+				document.getElementById('float_menu').style.backgroundColor = 'rgba(139, 211, 230, 0.5)';
+				document.querySelector('.new_menu').style.backgroundColor = 'white';
+				document.querySelector('li #calendar_button img').src = './icons/calendar-day.png';
+				document.getElementById('clock').style.color = 'black';
+				document.querySelector('.startLogo').src = './icons/xpra-logo.png';
+				document.querySelector('li #fullscreen_button img').src = './icons/expand.png';
+				document.querySelector('li #keyboard_button img').src = './icons/keyboard.png';
+				document.querySelector('li #setting img').src = './icons/settings.png';
+				document.querySelector('.new_menu #exitmenu img').src = './icons/logout.png';
+				document.querySelector('.calendar-container').style.backgroundColor = 'white';
+				document.querySelector('.calendar-container').style.color = 'black';
+				document.getElementById('menu_list').style.backgroundColor = 'white';
+				document.getElementById('menu_list').style.color = 'black';
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'white';
+				});
+				var elements = document.querySelectorAll('#startmenu li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'white';
+				});
+			}
 			else {
-			//theme dark
-			document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; 
-			document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f'; 
-			document.querySelector('li #calendar_button img').src = './icons/calendar_light.png';
-			document.getElementById('clock').style.color = 'white';
-			document.querySelector('.startLogo').src = './icons/xpra-logo_light.png';
-			document.querySelector('li #fullscreen_button img').src = './icons/expand_light.png';
-			document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
-			document.querySelector('li #setting img').src = './icons/setting_light.png';
-			document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
-			document.querySelector('.calendar-container').style.backgroundColor = 'black';
-			document.querySelector('.calendar-container').style.color = 'white';
-			document.getElementById('menu_list').style.backgroundColor = 'black';
-			document.getElementById('menu_list').style.color = 'white';
-			var elements = document.querySelectorAll('#menu_list li ul');
-			elements.forEach(function(element) {
-				element.style.backgroundColor = 'black';
-			});
-			var elements = document.querySelectorAll('#menu_list li ul');
-			elements.forEach(function(element) {
-				element.style.backgroundColor = 'black';
-			});
-			var elements = document.querySelectorAll('#startmenu li ul');
-			elements.forEach(function(element) {
-				element.style.backgroundColor = 'black';
-			});
+				//theme dark
+				document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+				document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f';
+				document.querySelector('li #calendar_button img').src = './icons/calendar_light.png';
+				document.getElementById('clock').style.color = 'white';
+				document.querySelector('.startLogo').src = './icons/xpra-logo_light.png';
+				document.querySelector('li #fullscreen_button img').src = './icons/expand_light.png';
+				document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
+				document.querySelector('li #setting img').src = './icons/setting_light.png';
+				document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
+				document.querySelector('.calendar-container').style.backgroundColor = 'black';
+				document.querySelector('.calendar-container').style.color = 'white';
+				document.getElementById('menu_list').style.backgroundColor = 'black';
+				document.getElementById('menu_list').style.color = 'white';
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'black';
+				});
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'black';
+				});
+				var elements = document.querySelectorAll('#startmenu li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'black';
+				});
 			}
 		});
 		// xu ly phan icon duoi taskbar
 
-document.querySelector('img#start').addEventListener('click', function (event) {
-    var elements = document.querySelectorAll('#startmenu li ul li');
-	elements.forEach(function(element) {
-    element.addEventListener('click', function (event) {
-        var image = document.createElement('img');
-        var newListItem = document.createElement('li');
-        var icon = element.querySelector('div img');
-        var iconCopy = icon.cloneNode(true);
-        newListItem.appendChild(iconCopy);
+		document.querySelector('img#start').addEventListener('click', function (event) {
+			var elements = document.querySelectorAll('#startmenu li ul li');
+			elements.forEach(function (element) {
+				element.addEventListener('click', function (event) {
+					var image = document.createElement('img');
+					var newListItem = document.createElement('li');
+					var icon = element.querySelector('div img');
+					var iconCopy = icon.cloneNode(true);
+					newListItem.appendChild(iconCopy);
 
-        var menu = document.querySelector('.Menu.-horizontal');
-        var children = Array.from(menu.children);
-        var doesExist = children.some(function(child) {
-            return child.innerHTML === newListItem.innerHTML;
-        });
+					var menu = document.querySelector('.Menu.-horizontal');
+					var children = Array.from(menu.children);
+					var doesExist = children.some(function (child) {
+						return child.innerHTML === newListItem.innerHTML;
+					});
 
-        if (!doesExist) {
-            menu.appendChild(newListItem);
-        }
-    })
-});
-});
-		
+					if (!doesExist) {
+						menu.appendChild(newListItem);
+					}
+
+				})
+			});
+		});
+
 
 		// calendar space
 		let date = new Date();
@@ -882,7 +907,7 @@ document.querySelector('img#start').addEventListener('click', function (event) {
 				calendar.style.display = 'block';
 			}
 		});
-		
+
 		// end calendar space
 		document.getElementById('exitmenu').addEventListener('click', function (event) {
 			event.preventDefault();
@@ -2030,13 +2055,7 @@ document.querySelector('img#start').addEventListener('click', function (event) {
 			};
 			xhr.send();
 		});
-			// xu ly phan tat ung dung di thi mat thanh tren thanh taskbar
-		// 	var elements = document.querySelectorAll('canvas');
-		// elements.array.forEach(function(element) {
-		// 	element.addEventListener('click', function (event) {
-		// 		element.style.display = 'none';
-		// 	})
-		// });
+
 	</script>
 </body>
 
