@@ -668,30 +668,6 @@
 			<ul class="calendar-dates"></ul>
 		</div>
 	</div>
-	<div id="7"
-		class="undecorated wmclass-Nautilus window-NORMAL border ui-draggable ui-draggable-handle ui-resizable wmclass-nautilus windowinfocus"
-		style="width: 894px; height: 595px; left: 10px; top: 95px; z-index: 7502;">
-		<div id="spinner7" class="spinneroverlay">
-			<div class="spinnermiddle">
-				<div class="spinner"></div>
-			</div>
-		</div>
-		<div id="head7" class="windowhead" style="display: none;"> <span class="windowicon"><img id="windowicon7"
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAC90lEQVR4nLWVv2scRxTHP7O7d/LplJyx79IcamyIVEQKwSa4UJMipEjKpJZCmrg6VAmBUKFGINJY/4DUpHJjBCkMyV+gS2EOhEkTghCSIAc2udu93fnlQjvr3b2VECF5MMy725nvZ96bmTfwP5twzsrKyleHh4e/1Ot13/d9PM9DCIExBmMMWmuUUmitC36+V0qRJIne3Nz8ut/vvywAjo6O+svLy4+EELgGYK3FWgtQgFlr0Vpnv/P9ycnJ72tra48BAgcwxiwNBoP/JC2tVmvJ+RnAWltfX18nDEMAlsTfzAhzK8HYegxsG4Bms8ne3l59CqC1zsR/6LyhFXiAd6Pww7t36czOXkG04ftXCePxGK11NiYDKKUA+G3vGz5qN7MBKkr44+df0VEyBQi8bAuZ8T1mPFD6vVYl4F4wRL0ZFoQ+/vaTGyNxdvhFyHc/vaoGuLCivwbce9q/lWDZ7u8/LmgVAI46/HOO8x8/B8CrBYhcGipNCLx6LfXngFF1BFJKrLW0v3xCba7xryLQscS+eI6UchoQxzH7+/vITz9Dlib6vk8QBARBkPme51Xe5GfPVjg/P68GdDodLi8vsdZijCGO4+wmG2MKfdV/xhiSJCGO4+oUBUGQlQE3SSl1o2D5mxCiOkVSSqSUU5MWFhaYTS9T2cbjMcfHx1OwawFutfkVjkYjNjY2mEwmBfFGo8HW1lZW4PLzkiSZBiRJkp2k/OAoimi32+zs7OD7/tVp0Zrt7W2iKEIpNRV1JcBFUF6N1pput8vFxUUB0O12s9NTjvrae+AiyA/WWjM/P0+v18OYq+rqeR6rq6vZ41NeVOUeXJeiMAxZXFxkd3d3apOHw+GtUuQD/mg0equ1bpWP6dnZGaenp7e6CwBCCMIwfAvUgUSkgAbw4cHBwetms/mBo7un0ln5jXZ+HhaG4T+9Xu8BMAEiV8lqKeRO2mZyrZ5+D3j/AhlAARJIgDjXJk4ckNeVSj8VrLkUpuJ5gAF02mQK1GWhd29jy/AGn976AAAAAElFTkSuQmCC"></span>
-			<span class="windowtitle" id="title7" style="left: 32px;">Home</span> <span class="windowbuttons"> <span
-					id="minimize7"><img src="icons/minimize.png"></span> <span id="maximize7"><img
-						src="icons/maximize.png"></span> <span id="close7"><img src="icons/close.png"></span> </span>
-		</div><canvas width="894" height="594"></canvas>
-		<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
-		</div>
-		<div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
-		<div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
-	</div>
 
 	<!-- end space -->
 	<script>
@@ -756,29 +732,29 @@
 		});
 		// xu ly phan icon duoi taskbar
 
-		document.querySelector('img#start').addEventListener('click', function (event) {
-			var elements = document.querySelectorAll('#startmenu li ul li');
-			elements.forEach(function (element) {
-				element.addEventListener('click', function (event) {
-					var image = document.createElement('img');
-					var newListItem = document.createElement('li');
-					var icon = element.querySelector('div img');
-					var iconCopy = icon.cloneNode(true);
-					newListItem.appendChild(iconCopy);
+		// document.querySelector('img#start').addEventListener('click', function (event) {
+		// 	var elements = document.querySelectorAll('#startmenu li ul li');
+		// 	elements.forEach(function (element) {
+		// 		element.addEventListener('click', function (event) {
+		// 			var image = document.createElement('img');
+		// 			var newListItem = document.createElement('li');
+		// 			var icon = element.querySelector('div img');
+		// 			var iconCopy = icon.cloneNode(true);
+		// 			newListItem.appendChild(iconCopy);
 
-					var menu = document.querySelector('.Menu.-horizontal');
-					var children = Array.from(menu.children);
-					var doesExist = children.some(function (child) {
-						return child.innerHTML === newListItem.innerHTML;
-					});
+		// 			var menu = document.querySelector('.Menu.-horizontal');
+		// 			var children = Array.from(menu.children);
+		// 			var doesExist = children.some(function (child) {
+		// 				return child.innerHTML === newListItem.innerHTML;
+		// 			});
 
-					if (!doesExist) {
-						menu.appendChild(newListItem);
-					}
+		// 			if (!doesExist) {
+		// 				menu.appendChild(newListItem);
+		// 			}
 
-				})
-			});
-		});
+		// 		})
+		// 	});
+		// });
 
 
 		// calendar space
