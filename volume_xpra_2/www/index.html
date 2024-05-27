@@ -144,19 +144,19 @@
 		display: flex;
 		align-items: center;
 		position: absolute;
-		top: 14%;
+		top: 16%;
 		left: 50%;
 	}
 
 	.new_menu #theme {
 		position: absolute;
-		top: 62%;
+		top: 69%;
 		left: 50%;
 	}
 
 	span.left {
 		position: absolute;
-		top: 12%;
+		top: 14%;
 		font-size: 20px;
 		width: 28%;
 		padding: 2% 5%;
@@ -167,7 +167,7 @@
 
 	span.theme {
 		position: absolute;
-		top: 60%;
+		top: 67%;
 		font-size: 20px;
 		width: 28%;
 		padding: 2% 5%;
@@ -407,7 +407,9 @@
 	.calendar-dates li:not(.active):hover::before {
 		background: #e4e1e1;
 	}
-
+	#startmenu li ul li{
+		cursor: pointer;
+	}
 	/* end calendar space  */
 </style>
 
@@ -735,19 +737,19 @@
 				document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
 				document.querySelector('.calendar-container').style.backgroundColor = 'black';
 				document.querySelector('.calendar-container').style.color = 'white';
-				document.getElementById('menu_list').style.backgroundColor = 'black';
+				document.getElementById('menu_list').style.backgroundColor = '#003049';
 				document.getElementById('menu_list').style.color = 'white';
 				var elements = document.querySelectorAll('#menu_list li ul');
 				elements.forEach(function (element) {
-					element.style.backgroundColor = 'black';
+					element.style.backgroundColor = '#003049';
 				});
 				var elements = document.querySelectorAll('#menu_list li ul');
 				elements.forEach(function (element) {
-					element.style.backgroundColor = 'black';
+					element.style.backgroundColor = '#003049';
 				});
 				var elements = document.querySelectorAll('#startmenu li ul');
 				elements.forEach(function (element) {
-					element.style.backgroundColor = 'black';
+					element.style.backgroundColor = '#003049';
 				});
 			}
 		});
