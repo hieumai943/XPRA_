@@ -11,5 +11,3 @@
 
 # third-party libraries:
 /node_modules
-
-./docker_test/volume_xpra_2
