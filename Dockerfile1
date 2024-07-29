@@ -1,0 +1,22 @@
+FROM ubuntu:bionic
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    xfce4 \
+    xfce4-terminal \
+    dbus-x11 \
+    x11-xserver-utils \
+    && apt-get clean
+
+# Set environment variables
+ENV DISPLAY=:14
+ENV XPRA_HTML=1
+ENV XPRA_X11=1
+ENV XPRA_XFCE=1
+ENV XDG_RUNTIME_DIR=/tmp/xdg
+
+# Create necessary directories
+RUN mkdir -p /tmp/xdg/xpra
+
+# Start Xpra with XFCE
+CMD /bin/bash -c "xpra start :14 --bind-tcp=0.0.0.0:9876 --html=on --start=startxfce4 && sleep infinity"
