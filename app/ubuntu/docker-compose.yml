@@ -1,0 +1,17 @@
+volumes:
+  xpra_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: xpra_volume
+services:
+  xpra:
+    image: hieuxfcetest
+    container_name: xpraUbuntu
+    hostname: xpra
+    restart: always
+    ports:
+      - '9870:9876'
+    volumes:
+      - xpra_volume:/usr/share/xpra

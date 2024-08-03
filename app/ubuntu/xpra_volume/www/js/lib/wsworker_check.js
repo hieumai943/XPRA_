@@ -1,0 +1,1 @@
+self.addEventListener("message",function(e){var data=e.data;switch(data.cmd){case"check":try{WebSocket?self.postMessage({result:!0}):self.postMessage({result:!1})}catch(err){self.postMessage({result:!1})}break;default:console.log("worker got unknown message: "+data.cmd)}},!1);

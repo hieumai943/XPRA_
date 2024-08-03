@@ -20,8 +20,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install XFCE, XPRA, and other necessary packages
 RUN apt-get update && apt-get install -y \
-    xfce4 \
-    xfce4-terminal \
+    # xfce4 \
+    # xfce4-terminal \
     xorg \
     dbus-x11 \
     x11-xserver-utils \

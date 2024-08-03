@@ -1,0 +1,1 @@
+/etc/xpra/html5-client/default-settings.txt
