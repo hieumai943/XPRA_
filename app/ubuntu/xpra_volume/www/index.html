@@ -63,7 +63,354 @@
     <script type="application/javascript" src="js/lib/simple-keyboard.js"></script>
     <link rel="stylesheet" href="css/simple-keyboard.css" />
   </head>
-
+  <style>
+    * {
+      font-family: 'Arial', sans-serif;
+    }
+  
+    body {
+      background-image: url('./icons/bgr.png') !important;
+      /* Replace with your preferred color */
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  
+    #start {
+      height: 72%;
+      transform: translateY(33%);
+      margin-right: 10px;
+    }
+  
+    #startmenu .-hasSubmenu ul {
+      top: -3vh;
+    }
+  
+    #menu_list .firstmenu a:first-child {
+      display: flex;
+      /* padding: 10px; */
+    }
+  
+    .right_tb {
+      display: flex !important;
+      align-items: center;
+      margin: 0px;
+      list-style: none;
+      position: absolute;
+      right: 15px;
+    }
+  
+    #float_menu {
+      top: 94vh !important;
+      height: 6vh !important;
+    }
+  
+    .right_tb li {
+      margin: 0px 10px;
+    }
+  
+    .-hasSubmenu a .menu-divleft img {
+      margin-right: 10px;
+    }
+  
+    #startmenu .-hasSubmenu {
+      margin: 5px 0px;
+    }
+  
+    #menu_list li:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  
+    #fullscreen_button::before {
+      display: none;
+    }
+  
+    .new_menu {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 38vw;
+      height: 40vh;
+      background-color: white;
+      z-index: 9998;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  
+    .new_menu #uploadForm {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 16%;
+      left: 50%;
+    }
+  
+    .new_menu #theme {
+      position: absolute;
+      top: 69%;
+      left: 50%;
+    }
+  
+    span.left {
+      position: absolute;
+      top: 14%;
+      font-size: 20px;
+      width: 28%;
+      padding: 2% 5%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #ccc;
+    }
+  
+    span.theme {
+      position: absolute;
+      top: 67%;
+      font-size: 20px;
+      width: 28%;
+      padding: 2% 5%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #ccc;
+    }
+  
+    span.left:hover,
+    span.theme:hover {
+      background-color: #ccc;
+  
+      cursor: pointer;
+    }
+  
+    .new_menu form button img {
+      width: 100%;
+    }
+  
+    #uploadForm button {
+      padding: 10px;
+      color: #fff;
+      background-color: grey;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    #theme button {
+      padding: 10px;
+      color: #fff;
+      background-color: grey;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    #uploadForm button:hover,
+    #theme button:hover {
+      background-color: darkgrey;
+    }
+  
+    #uploadForm button img {
+      width: 20px;
+      height: 20px;
+    }
+  
+    #fileInput {
+      display: none;
+    }
+  
+    #fileInputLabel {
+      padding: 10px;
+      color: #fff;
+      background-color: #006e58;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+    }
+  
+    #fileInputLabel:hover {
+      background-color: #90EE90;
+      color: black;
+    }
+  
+    #fadeBackground {
+      display: none;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .windowicon {
+      display: inline-block;
+      position: absolute;
+      width: 35px;
+      height: 30px;
+      left: 0.5%;
+      top: 0.5%;
+      overflow: hidden;
+      cursor: default;
+      background-color: transparent;
+    }
+  
+    /* switch button */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+  
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+  
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+  
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+  
+    input:checked+.slider:before {
+      transform: translateX(26px);
+    }
+  
+    /* calendar space */
+    .calendar-container {
+      position: absolute;
+      top: 20vh;
+      right: 10px;
+      bottom: calc(7vh);
+      background: #fff;
+      width: 450px;
+      border-radius: 10px ;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+  
+    .calendar-container header {
+      display: flex;
+      align-items: center;
+      padding: 25px 30px 10px;
+      justify-content: space-between;
+    }
+  
+    header .calendar-navigation {
+      display: flex;
+    }
+  
+    header .calendar-navigation span {
+      height: 38px;
+      width: 38px;
+      margin: 0 1px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 38px;
+      border-radius: 50%;
+      user-select: none;
+      color: #aeabab;
+      font-size: 1.9rem;
+    }
+  
+    .calendar-navigation span:last-child {
+      margin-right: -10px;
+    }
+  
+    header .calendar-navigation span:hover {
+      background: #f2f2f2;
+    }
+  
+    header .calendar-current-date {
+      font-weight: 500;
+      font-size: 1.45rem;
+    }
+  
+    .calendar-body {
+      padding: 20px;
+    }
+  
+    .calendar-body ul {
+      list-style: none;
+      flex-wrap: wrap;
+      display: flex;
+      text-align: center;
+    }
+  
+    .calendar-body .calendar-dates {
+      margin-bottom: 20px;
+    }
+  
+    .calendar-body li {
+      width: calc(100% / 7);
+      font-size: 1.07rem;
+    }
+  
+    .calendar-body .calendar-weekdays li {
+      cursor: default;
+      font-weight: 500;
+    }
+  
+    .calendar-body .calendar-dates li {
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+    }
+  
+    .calendar-dates li.inactive {
+      color: #aaa;
+    }
+  
+    .calendar-dates li.active {
+      color: #fff;
+    }
+  
+    .calendar-dates li::before {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .calendar-dates li.active::before {
+      background: #6332c5;
+    }
+  
+    .calendar-dates li:not(.active):hover::before {
+      background: #e4e1e1;
+    }
+    #startmenu li ul li{
+      cursor: pointer;
+    }
+    /* end calendar space  */
+  </style>
   <body>
     <div id="dpi" style="
         width: 1in;
@@ -111,135 +458,106 @@
 
     <div id="screen" style="width: 100%; height: 100%">
       <div id="float_menu">
-        <ul class="Menu -horizontal">
-          <li class="-hasSubmenu -noChevron">
-            <a href="#" title="Xpra" class="noDrag" data-icon="menu"></a>
+        <ul class="Menu -horizontal" style="height: 100%;">
+          <li class="-hasSubmenu -noChevron" style="height: 100%;">
+            <a href="#" title="Xpra" class="noDrag" style="height: 100%;">
+              <img id="start" class="startLogo" src="./icons/xpra-logo.png">
+            </a>
             <ul id="menu_list">
-              <li class="-hasSubmenu" id="startmenuentry" style="display: none">
-                <a data-icon="apps" href="#">Start</a>
-                <ul id="startmenu"></ul>
-              </li>
-              <li class="-hasSubmenu">
-                <a href="#" data-icon="kitchen">Server</a>
-                <ul>
-                  <li id="clock_menu_entry">
-                    <a
-                      href="#"
-                      data-icon="access_time"
-                      onclick="return false"
-                      id="clock_menu_text"
-                    ></a>
-                  </li>
-                  <li id="upload_menu_entry">
-                    <a
-                      href="#"
-                      data-icon="cloud_upload"
-                      onclick="upload_file(event); return false"
-                      >Upload file</a
-                    >
-                  </li>
-                  <li id="download_menu_entry">
-                    <a
-                      href="#"
-                      data-icon="cloud_download"
-                      onclick="download_file(event); return false"
-                      >Download file</a
-                    >
-                  </li>
-                  <li id="shutdown_menu_entry">
-                    <a
-                      href="#"
-                      data-icon="exit_to_app"
-                      onclick="confirm_shutdown_server(event); return false"
-                      >Shutdown Server</a
-                    >
-                  </li>
+              <li class="firstmenu -hasSubmenu" style="padding: 20px 0;">
+                <a class="bigmenu" href="#">
+                  <img id="start" src="./icons/menu-bar.png">
+                  Start
+                </a>
+                <ul id="startmenu">
                 </ul>
               </li>
-              <li class="-hasSubmenu">
-                <a href="#" data-icon="info">Information</a>
-                <ul>
-                  <li>
-                    <a
-                      href="#"
-                      data-icon="info"
-                      onclick="show_about(event); return false"
-                      >About Xpra</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      data-icon="trending_up"
-                      onclick="show_sessioninfo(event); return false"
-                      >Session Info</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      data-icon="bug_report"
-                      onclick="show_bugreport(event); return false"
-                      >Bug Report</a
-                    >
-                  </li>
+              <li class="firstmenu -hasSubmenu" style="padding:  22px 0;">
+                <a class="bigmenu" href="#">
+                  <img id="start" src="./icons/server.png">
+                  Server</a>
+                <ul style="position: relative;
+                  down: -10%;
+                  top: -5vh;">
+                  <li id="clock_menu_entry"><a href="#" data-icon="access_time" onclick="return false"
+                      id="clock_menu_text"></a></li>
+                  <li><a href="#" data-icon="cloud_upload"
+                      onclick="upload_file(event); return false">Upload file</a></li>
+                  <li><a href="#" data-icon="exit_to_app"
+                      onclick="confirm_shutdown_server(event); return false">Shutdown Server</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="#" data-icon="refresh" onclick="location.reload()"
-                  >Reload</a
-                >
+              <!--
+                <li class="-hasSubmenu">
+                  <a href="#" data-icon="list">Features</a>
+                  <ul>
+                    <li><a href="#" data-icon="message">Notifications</a></li>
+                  </ul>
+                </li>
+                -->
+              <li class="firstmenu -hasSubmenu" style="padding:20px 0;">
+                <a class="bigmenu" href="#">
+                  <img id="start" src="./icons/icon.png">
+                  Information</a>
+                <ul style="position: relative;
+                  down: -10%;
+                  top: -5vh;">
+                  <li><a href="#" data-icon="info" onclick="show_about(event); return false">About
+                      Xpra</a></li>
+                  <li><a href="#" data-icon="trending_up"
+                      onclick="show_sessioninfo(event); return false">Session Info</a></li>
+                  <li><a href="#" data-icon="bug_report" onclick="show_bugreport(event); return false">Bug
+                      Report</a></li>
+                </ul>
               </li>
-              <li>
-                <a
-                  href="#"
-                  data-icon="exit_to_app"
-                  onclick="client.disconnect_reason='User request'; client.close(); return false"
-                  >Disconnect</a
-                >
-              </li>
+              <li style="padding: 20px 0;"><a href="#"
+                  onclick="client.disconnect_reason='User request'; client.close(); return false">
+                  <img id="start" src="./icons/disconnected.png">
+                  Disconnect</a></li>
             </ul>
           </li>
-          <li class="-hasSubmenu -noChevron">
-            <a
-              href="#"
-              title="Open Windows"
-              data-icon="filter"
-              id="open_windows"
-            ></a>
-            <ul id="open_windows_list"></ul>
+          <li class="-hasSubmenu -noChevron" style="height: 100%; display: none;">
+            <a href="#" title="Open Windows" style="height: 100%;">
+              <img id="start" src="./icons/folder-open.png">
+  
+            </a>
+            <ul id="open_windows_list">
+            </ul>
           </li>
-          <li class="-hasSubmenu -noChevron">
-            <a
-              href="#"
-              id="fullscreen_button"
-              title="Fullscreen"
-              data-icon="fullscreen"
-            ></a>
+  
+  
+        </ul>
+        <ul class="right_tb" style="height: 30px;top:10%">
+          <!-- <li class="-hasSubmenu -noChevron" style="height: 80%;">
+            <a href="#" title="Audio">
+              <img id="start" src="./icons/volume-mute.png" style="height: 2.5vh;">
+            </a>
+          </li> -->
+          <li class="-hasSubmenu -noChevron" style="height: 80%;margin-top: 15px;">
+            <!-- <a href="#" id="keyboard_button" title="clock"  >
+              <img id="start" src="./icons/clock.png">
+            </a> -->
+            <div id="clock" style="font-size: 24px;"></div>
           </li>
-          <li class="-hasSubmenu -noChevron">
-            <a
-              href="#"
-              id="keyboard_button"
-              title="Keyboard"
-              data-icon="keyboard"
-            ></a>
+          <li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
+            <a href="#" id="calendar_button" title="Calendar">
+              <img id="start" src="./icons/calendar-day.png">
+            </a>
           </li>
-          <li class="-hasSubmenu -noChevron">
-            <a
-              href="#"
-              id="clipboard_button"
-              title="Clipboard Copy"
-              data-icon="content_copy"
-            ></a>
+          <li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px ;">
+            <a href="#" id="fullscreen_button" title="Fullscreen" style="height: 100%;">
+              <img id="start" src="./icons/expand.png">
+            </a>
           </li>
-          <li class="-hasSubmenu -noChevron">
-            <a
-              href="#"
-              id="sound_button"
-              title="Audio"
-              data-icon="volume_off"
-            ></a>
+          <li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
+            <a href="#" id="keyboard_button" title="Keyboard" style="height: 100%;">
+              <img id="start" src="./icons/keyboard.png">
+            </a>
+          </li>
+          <li class="-hasSubmenu -noChevron" style="height: 100%;margin-top: 10px;">
+            <a href="#" id="setting" title="setting" style="height: 100%;">
+              <img id="start" src="./icons/settings.png">
+            </a>
           </li>
         </ul>
         <div id="float_tray" class="menu-divright"></div>
