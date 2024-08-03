@@ -572,6 +572,24 @@
     <form id="upload_form">
       <input type="file" id="upload" style="display: none" />
     </form>
+    <div class="new_menu">
+      <span id="exitmenu" style="position: absolute; top: 2% ; right: 2%; cursor: pointer;"><img style="width: 30px;"
+          src="./icons/logout.png" alt=""></span>
+      <span class="left">Change Background</span>
+      <form id="uploadForm">
+        <input type="file" id="fileInput">
+        <label for="fileInput" id="fileInputLabel">Choose File
+        </label>
+        <button type="submit" style="margin-left:10px ;"><img src="./icons/upload.png" alt=""></button>
+      </form>
+      <span class="theme">Dark Mode</span>
+      <form id="theme">
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </form>
+    </div>
 
     <div id="about">
       <h2>Xpra HTML5 Client</h2>
@@ -673,8 +691,359 @@
       class="simple-keyboard"
       style="display: block; position: fixed; bottom: 0; width: 100%"
     ></div>
+    <!-- calendar space -->
+	<div class="calendar-container">
+		<header class="calendar-header">
+			<p class="calendar-current-date"></p>
+			<div class="calendar-navigation">
+				<span id="calendar-prev" class="material-symbols-rounded">
+					chevron_left
+				</span>
+				<span id="calendar-next" class="material-symbols-rounded">
+					chevron_right
+				</span>
+			</div>
+		</header>
 
+		<div class="calendar-body">
+			<ul class="calendar-weekdays" style="padding: 0">
+				<li>Sun</li>
+				<li>Mon</li>
+				<li>Tue</li>
+				<li>Wed</li>
+				<li>Thu</li>
+				<li>Fri</li>
+				<li>Sat</li>
+			</ul>
+			<ul class="calendar-dates" style="padding:0"></ul>
+		</div>
+	</div>
+
+
+	<!-- "<div id="spinner18" class="spinneroverlay" style="display: none;">
+		<div class="spinnermiddle">
+			<div class="spinner"></div>
+		</div>
+	</div>
+	<div id="head18" class="windowhead" style="display: none;"> <span class="windowicon"></span> <span
+			class="windowtitle" id="title18" style="left: 32px;">Home</span> <span class="windowbuttons"> <span
+				id="minimize18"><img src="icons/minimize.png"></span> <span id="maximize18"><img
+					src="icons/maximize.png"></span> <span id="close18"><img src="icons/close.png"></span> </span></div>
+	<canvas width="894" height="585"></canvas>
+	<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+	<div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>" -->
+
+
+	<!-- end space -->
     <script>
+      // start self changing
+      let count = 0;
+		document.querySelector('span.slider').addEventListener('click', function (event) {
+			// day la doan xu ly theme
+			count++;
+			if (count % 2 == 0) {
+				//theme light
+				document.getElementById('float_menu').style.backgroundColor = 'rgba(139, 211, 230, 0.5)';
+				document.querySelector('.new_menu').style.backgroundColor = 'white';
+				document.querySelector('li #calendar_button img').src = './icons/calendar-day.png';
+				document.getElementById('clock').style.color = 'black';
+				document.querySelector('.startLogo').src = './icons/xpra-logo.png';
+				document.querySelector('li #fullscreen_button img').src = './icons/expand.png';
+				document.querySelector('li #keyboard_button img').src = './icons/keyboard.png';
+				document.querySelector('li #setting img').src = './icons/settings.png';
+				document.querySelector('.new_menu #exitmenu img').src = './icons/logout.png';
+				document.querySelector('.calendar-container').style.backgroundColor = 'white';
+				document.querySelector('.calendar-container').style.color = 'black';
+				document.getElementById('menu_list').style.backgroundColor = 'white';
+				document.getElementById('menu_list').style.color = 'black';
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'white';
+				});
+				var elements = document.querySelectorAll('#startmenu li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = 'white';
+				});
+			}
+			else {
+				//theme dark
+				document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+				document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f';
+				document.querySelector('li #calendar_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721706117/calendar_light_pbb32x.png';
+				document.getElementById('clock').style.color = 'white';
+				document.querySelector('.startLogo').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705704/xpra-logo_light_e3ngxb.png';
+				document.querySelector('li #fullscreen_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705944/expand_light_wdn9nw.png';
+				document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
+				document.querySelector('li #setting img').src = './icons/setting_light.png';
+				document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
+				document.querySelector('.calendar-container').style.backgroundColor = 'black';
+				document.querySelector('.calendar-container').style.color = 'white';
+				document.getElementById('menu_list').style.backgroundColor = '#003049';
+				document.getElementById('menu_list').style.color = 'white';
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = '#003049';
+				});
+				var elements = document.querySelectorAll('#menu_list li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = '#003049';
+				});
+				var elements = document.querySelectorAll('#startmenu li ul');
+				elements.forEach(function (element) {
+					element.style.backgroundColor = '#003049';
+				});
+			}
+		});
+		// xu ly phan icon duoi taskbar
+
+		// document.querySelector('img#start').addEventListener('click', function (event) {
+		// 	var elements = document.querySelectorAll('#startmenu li ul li');
+		// 	elements.forEach(function (element) {
+		// 		element.addEventListener('click', function (event) {
+		// 			var image = document.createElement('img');
+		// 			var newListItem = document.createElement('li');
+		// 			var icon = element.querySelector('div img');
+		// 			var iconCopy = icon.cloneNode(true);
+		// 			newListItem.appendChild(iconCopy);
+
+		// 			var menu = document.querySelector('.Menu.-horizontal');
+		// 			var children = Array.from(menu.children);
+		// 			var doesExist = children.some(function (child) {
+		// 				return child.innerHTML === newListItem.innerHTML;
+		// 			});
+
+		// 			if (!doesExist) {
+		// 				menu.appendChild(newListItem);
+		// 			}
+
+		// 		})
+		// 	});
+		// });
+
+
+		// calendar space
+		let date = new Date();
+		let year = date.getFullYear();
+		let month = date.getMonth();
+
+		const day = document.querySelector(".calendar-dates");
+
+		const currdate = document
+			.querySelector(".calendar-current-date");
+
+		const prenexIcons = document
+			.querySelectorAll(".calendar-navigation span");
+
+		// Array of month names
+		const months = [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"
+		];
+
+		// Function to generate the calendar
+		const manipulate = () => {
+
+			// Get the first day of the month
+			let dayone = new Date(year, month, 1).getDay();
+
+			// Get the last date of the month
+			let lastdate = new Date(year, month + 1, 0).getDate();
+
+			// Get the day of the last date of the month
+			let dayend = new Date(year, month, lastdate).getDay();
+
+			// Get the last date of the previous month
+			let monthlastdate = new Date(year, month, 0).getDate();
+
+			// Variable to store the generated calendar HTML
+			let lit = "";
+
+			// Loop to add the last dates of the previous month
+			for (let i = dayone; i > 0; i--) {
+				lit +=
+					`<li class="inactive">${monthlastdate - i + 1}</li>`;
+			}
+
+			// Loop to add the dates of the current month
+			for (let i = 1; i <= lastdate; i++) {
+
+				// Check if the current date is today
+				let isToday = i === date.getDate()
+					&& month === new Date().getMonth()
+					&& year === new Date().getFullYear()
+					? "active"
+					: "";
+				lit += `<li class="${isToday}">${i}</li>`;
+			}
+
+			// Loop to add the first dates of the next month
+			for (let i = dayend; i < 6; i++) {
+				lit += `<li class="inactive">${i - dayend + 1}</li>`
+			}
+
+			// Update the text of the current date element 
+			// with the formatted current month and year
+			currdate.innerText = `${months[month]} ${year}`;
+
+			// update the HTML of the dates element 
+			// with the generated calendar
+			day.innerHTML = lit;
+		}
+
+		manipulate();
+
+		// Attach a click event listener to each icon
+		prenexIcons.forEach(icon => {
+
+			// When an icon is clicked
+			icon.addEventListener("click", () => {
+
+				// Check if the icon is "calendar-prev"
+				// or "calendar-next"
+				month = icon.id === "calendar-prev" ? month - 1 : month + 1;
+
+				// Check if the month is out of range
+				if (month < 0 || month > 11) {
+
+					// Set the date to the first day of the 
+					// month with the new year
+					date = new Date(year, month, new Date().getDate());
+
+					// Set the year to the new year
+					year = date.getFullYear();
+
+					// Set the month to the new month
+					month = date.getMonth();
+				}
+
+				else {
+
+					// Set the date to the current date
+					date = new Date();
+				}
+
+				// Call the manipulate function to 
+				// update the calendar display
+				manipulate();
+			});
+		});
+		document.getElementById('calendar_button').addEventListener('click', function (event) {
+			event.preventDefault();
+			var calendar = document.querySelector('.calendar-container');
+			if (calendar.style.display === 'block') {
+				calendar.style.display = 'none';
+			}
+			else {
+				calendar.style.display = 'block';
+			}
+		});
+
+		// end calendar space
+		document.getElementById('exitmenu').addEventListener('click', function (event) {
+			event.preventDefault();
+			var newMenu = document.querySelector('.new_menu');
+			newMenu.style.display = 'none';
+			document.getElementById('fadeBackground').style.display = 'none';
+		});
+		// click button setting
+		document.getElementById('setting').addEventListener('click', function (event) {
+			event.preventDefault();
+			var newMenu = document.querySelector('.new_menu');
+			if (newMenu.style.display === 'flex') {
+				newMenu.style.display = 'none';
+				document.getElementById('fadeBackground').style.display = 'none';
+			}
+			else {
+				newMenu.style.display = 'flex';
+				document.getElementById('fadeBackground').style.display = 'block';
+			}
+		});
+		// document.querySelector("span.left").addEventListener('click', function (event) {
+		// 	var formFile = document.querySelector(".new_menu form");
+		// 	var button = document.querySelector("span.left");
+		// 	var style = window.getComputedStyle(formFile);
+
+		// 	if (style.display === 'block') {
+		// 		formFile.style.display = 'none';
+		// 		button.style.background = "white";
+		// 		document.getElementById('fadeBackground').style.display = 'none';
+		// 	}
+		// 	else {
+		// 		formFile.style.display = 'block';
+		// 		button.style.background = "#ccc";
+		// 		document.getElementById('fadeBackground').style.display = 'block';
+		// 	}
+		// });
+		var clockElement = document.getElementById('clock');
+
+		function updateClock(clock) {
+			var date = new Date();
+			var hours = date.getHours().toString().padStart(2, '0');
+			var minutes = date.getMinutes().toString().padStart(2, '0');
+			clock.textContent = hours + ":" + minutes;
+		}
+
+		setInterval(function () {
+			updateClock(clockElement);
+		}, 1000);
+
+		// document.getElementById('start').addEventListener('click', function() {
+
+		// 	var displayStyle = clockElement.style.display;
+		// 	if (displayStyle === 'none') {
+		// 		clockElement.style.display = 'block';
+		// 	} else {
+		// 		clockElement.style.display = 'none';
+		// 	}
+		// });
+		document.getElementById('fileInput').addEventListener('change', function () {
+			var fileInputLabel = document.getElementById('fileInputLabel');
+			var file = this.files[0];
+			if (file) {
+				fileInputLabel.textContent = file.name;
+			} else {
+				fileInputLabel.textContent = 'Choose File';
+			}
+		});
+
+
+		document.getElementById('uploadForm').addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			var fileInput = document.getElementById('fileInput');
+			var file = fileInput.files[0];
+			var formData = new FormData();
+			formData.append('file', file);
+
+			fetch('http://localhost:5210/render-image', {
+				method: 'POST',
+				body: formData
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					location.reload();
+				}
+				)
+				.catch(error => console.error('Error:', error));
+		});
+      // end self chaging
 var default_settings = {};
 var getparam = function (prop) {
 var v = Utilities.getparam(prop);
@@ -1940,6 +2309,8 @@ for(var key in tmp_default_settings) {
         clog("document is ready, browser is", navigator.platform, "64-bit:", Utilities.is_64bit());
         load_default_settings();
       });
+      console.log("client.js loaded");
+      
     </script>
   </body>
 </html>
