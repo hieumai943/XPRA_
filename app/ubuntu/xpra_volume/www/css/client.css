@@ -125,6 +125,8 @@ canvas {
 }
 .windowtitle {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 5px;
   display: inline-block;
   float: left;
   position: absolute;
@@ -164,7 +166,7 @@ div.windowinfocus {
   border-bottom: 1px solid #c0c0c0;
 }
 div.windowinfocus div.windowhead {
-  background-color: #ffffff;
+  background-color: #a0a0a0;
 }
 
 .modal {
