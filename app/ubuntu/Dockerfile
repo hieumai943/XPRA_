@@ -2,6 +2,8 @@
 
 FROM ubuntu:focal
 
+
+
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_REF
@@ -33,7 +35,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN apt-key list
-
+    
 # Add sudo to user
 RUN adduser --disabled-password --gecos "VICE_User" --uid 1000 user
 RUN apt-get update && apt-get install -y sudo
@@ -78,12 +80,13 @@ RUN echo "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | tee 
 # Install Go
 RUN wget -c https://go.dev/dl/go1.21.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 
+
 # iRODS iCommands kludge
 RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add - && \
     echo "deb [arch=amd64] https://packages.irods.org/apt/ focal main" > /etc/apt/sources.list.d/renci-irods.list && \
     apt-get update && \
     apt-get install -y irods-icommands
-
+    
 RUN apt install -y irods-icommands
 
 
@@ -143,7 +146,13 @@ WORKDIR /home/user
 
 # add iRODS iCommands to user profile as JSON
 RUN mkdir /home/user/.irods && echo '{"irods_host": "data.cyverse.org", "irods_port": 1247, "irods_user_name": "$IPLANT_USER", "irods_zone_name": "iplant"}' | tee  > /home/user/.irods/irods_environment.json
+COPY xpra_volume/ /usr/share/xpra
+RUN rm -f /usr/share/xpra/www/index.html.br 
+RUN rm -f /usr/share/xpra/www/css/menu.css.br
+RUN rm -f /usr/share/xpra/www/css/menu-skin.css.br
+RUN rm -f /usr/share/xpra/www/js/Window.js.br
+
 
 EXPOSE 9876
 
-CMD xpra start --bind-tcp=0.0.0.0:9876 --html=on --start-child=gnome-terminal --exit-with-children=no --daemon=no --xvfb="/usr/bin/Xvfb +extension Composite -screen 0 1920x1080x24+32 -nolisten tcp -noreset" --pulseaudio=no --notifications=no --bell=no :100d
+CMD xpra start --bind-tcp=0.0.0.0:9876 --html=on --start-child=gnome-terminal --exit-with-children=no --daemon=no --xvfb="/usr/bin/Xvfb +extension Composite -screen 0 1920x1080x24+32 -nolisten tcp -noreset" --pulseaudio=no --notifications=no --bell=no :100

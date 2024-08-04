@@ -7,11 +7,11 @@ volumes:
       device: xpra_volume
 services:
   xpra:
-    image: hieuxfcetest
+    image: hieuxfcetest1634
     container_name: xpraUbuntu
     hostname: xpra
     restart: always
     ports:
-      - '9870:9876'
+      - '9871:9876'
     volumes:
       - xpra_volume:/usr/share/xpra
