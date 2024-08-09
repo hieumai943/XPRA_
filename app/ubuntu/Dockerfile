@@ -63,7 +63,8 @@ RUN apt-get update && apt-get install -y apt-utils \
     nautilus \
     seahorse-nautilus \
     software-properties-common \
-    tasksel
+    tasksel \
+    gedit 
 
 RUN mkdir -p /run/user/1000/xpra
 RUN mkdir -p /run/xpra

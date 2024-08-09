@@ -186,10 +186,10 @@ var head =
       //modal windows cannot be minimized (see #204)
       head += `<span id="minimize${wid}"><img src="icons/minimize.png" /></span>`;
     }
-    head +=
-      `<span id="maximize${wid}"><img src="icons/maximize.png" /></span> ` +
-      `<span id="close${wid}"><img src="icons/close.png" /></span> ` +
-      `</span></div>`;
+    // head +=
+    //   `<span id="maximize${wid}"><img src="icons/maximize.png" /></span> ` +
+    //   `<span id="close${wid}"><img src="icons/close.png" /></span> ` +
+    //   `</span></div>`;
     jQuery(this.div).prepend(head);
     // make draggable
     if (this.scale !== 1) {

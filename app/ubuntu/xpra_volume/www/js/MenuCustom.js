@@ -88,7 +88,7 @@ var img2 = new Image();
   });
 var img3 = new Image();
   img3.id = `windowlistitemmax${wid}`;
-  img3.src = "icons/maximize.png";
+  // img3.src = "icons/maximize.png";
   img3.title = "Maximize";
   img3.addEventListener("click", function (e) {
     win.toggle_maximized();
