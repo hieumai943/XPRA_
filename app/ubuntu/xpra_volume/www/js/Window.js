@@ -184,12 +184,12 @@ var head =
       `<span class="windowbuttons"> `;
     if (!jQuery(this.div).hasClass("modal")) {
       //modal windows cannot be minimized (see #204)
-      head += `<span id="minimize${wid}"><img src="icons/minimize.png" /></span>`;
+      head += `<span id="minimize${wid}"><img style="width: 17px;margin:0 5px" src="icons/minimize.png" /></span>`;
     }
-    // head +=
-    //   `<span id="maximize${wid}"><img src="icons/maximize.png" /></span> ` +
-    //   `<span id="close${wid}"><img src="icons/close.png" /></span> ` +
-    //   `</span></div>`;
+    head +=
+      `<span id="maximize${wid}"><img style="width: 17px;margin:0 5px" src="icons/maximize.png" /></span> ` +
+      `<span id="close${wid}"><img style="width: 17px;margin:0 5px" src="icons/close.png" /></span> ` +
+      `</span></div>`;
     jQuery(this.div).prepend(head);
     // make draggable
     if (this.scale !== 1) {
@@ -600,6 +600,52 @@ var title = Utilities.s(metadata["title"]);
         jQuery(`#title${this.wid}`).html(this.title);
 var trimmedTitle = Utilities.trimString(this.title, 30);
         jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
+        console.log("hieu")
+        // Create a new img element
+        var img = document.createElement('img');
+        setTimeout(function () {
+        var htmlContentList = document.querySelectorAll('.windowicon');
+        var htmlContent = htmlContentList[htmlContentList.length -1 ];
+        var newListItem = document.createElement('li');
+        var htmlContentCopy = htmlContent.cloneNode(true);
+        
+        newListItem.appendChild(htmlContentCopy);
+        newListItem.style.transform = "translateX(7vh)";
+        newListItem.style.padding = "0 30px";
+        console.log(newListItem)
+        var menu = document.querySelector('.Menu.-horizontal');
+        var children = Array.from(menu.children);
+        console.log(children)
+        var doesExist = children.some(function (child) {
+          // console.log(child.querySelector('img').getAttribute('src'))
+            return child.querySelector('img').getAttribute('src') === newListItem.querySelector('img').getAttribute('src');
+        });
+
+        if (!doesExist) {
+            menu.appendChild(newListItem);
+            // minh se gan id cho img do chinh la id cua the div, roi sau do chi can xoa  img co id do o ben duoi
+        }
+        }, 400);
+      
+        // setTimeout(function () {
+        //     if (htmlContent) {
+        //         var newListItem = document.createElement('li');
+        //         newListItem.id = divContent.id
+        //         newListItem.appendChild(htmlContent);
+        //         console.log(newListItem)
+        //         var menu = document.querySelector('.Menu.-horizontal');
+        //         var children = Array.from(menu.children);
+        //         var doesExist = children.some(function (child) {
+        //             return child.innerHTML === newListItem.innerHTML;
+        //         });
+
+        //         if (!doesExist) {
+        //             menu.appendChild(newListItem);
+        //             // minh se gan id cho img do chinh la id cua the div, roi sau do chi can xoa  img co id do o ben duoi
+        //         }
+        //     }
+
+        // }, 100);
       }
     }
     if ("has-alpha" in metadata) {
@@ -798,10 +844,22 @@ var maxh = null;
     }
     this.minimized = minimized;
     if (minimized) {
+      var PopUpDiv = this.div
       jQuery(this.div).hide(200);
-    } else {
+      var divContent = this.div.querySelector('.windowicon img')
+      setTimeout(function () {
+          var IdIcon = divContent.id
+          document.getElementById(IdIcon).addEventListener('click', function () {
+              console.log("minimized");
+              jQuery(PopUpDiv).show(200);
+              XpraWindow.prototype.set_minimized 
+          }
+      )
+      },400)
+  } else {
+      console.log("hieu")
       jQuery(this.div).show(200);
-    }
+  }
   }
 
   /**
@@ -854,6 +912,7 @@ var geom = this.get_internal_geometry();
   _set_decorated(decorated) {
     this.topoffset = Number.parseInt(jQuery(this.div).css("border-top-width"), 10);
     if (decorated) {
+      console.log("hieu decorated")
       jQuery(`#head${this.wid}`).show();
       jQuery(this.div).removeClass("undecorated");
       jQuery(this.div).addClass("window");
@@ -862,6 +921,7 @@ var geom = this.get_internal_geometry();
         this.debug("geometry", "_set_decorated(", decorated, ") new topoffset=", self.topoffset);
       }
     } else {
+      console.log("hieu decorated")
       jQuery(`#head${this.wid}`).hide();
       jQuery(this.div).removeClass("window");
       jQuery(this.div).addClass("undecorated");

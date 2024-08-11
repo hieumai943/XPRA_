@@ -3231,6 +3231,7 @@ var win = this.id_to_window[wid];
         //other trays may have moved:
         this.reconfigure_all_trays();
       }
+
     }
     this.clog("lost window", wid, ", remaining: ", Object.keys(this.id_to_window));
     if (Object.keys(this.id_to_window).length === 0) {
