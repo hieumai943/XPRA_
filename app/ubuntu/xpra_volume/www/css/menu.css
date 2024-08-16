@@ -69,7 +69,7 @@ SOFTWARE.
   }
   .Menu li > * {
       display: block;
-      position: relative;
+      /* position: relative; */
   }
   .Menu li > ul {
       position: absolute;

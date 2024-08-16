@@ -51,7 +51,6 @@ RUN apt-get update && \
 RUN apt-get update && apt-get install -y apt-utils \
     build-essential \
     firefox \
-    gdm3 \
     glances \
     glmark2 \
     gnome-shell \

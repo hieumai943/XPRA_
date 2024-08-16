@@ -30,7 +30,7 @@ SOFTWARE.
 /* padding: 10px 50vw !important; */
   /* padding : 12px 0 !important; */
 position: fixed;
-  background-color: rgba(139, 211, 230, 0.5);;
+  background-color: rgba(139, 211, 230, 1);;
   bottom: 0px;
   z-index: 9999;
 }

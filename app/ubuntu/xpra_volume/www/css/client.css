@@ -125,16 +125,16 @@ canvas {
 }
 .windowtitle {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   margin-left: 5px;
   display: inline-block;
   float: left;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0.7vh;
+  left: 0.3vh;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 5px;
+  padding: 5px 15px;
   padding-right: 48px;
   white-space: nowrap;
   cursor: default;
@@ -143,7 +143,7 @@ canvas {
   display: inline-block;
   position: absolute;
   z-index: 1;
-  top: 0px;
+  top: 0.5vh;
   right: 0px;
   padding-right: 5px;
   cursor: pointer;
@@ -161,16 +161,21 @@ div.windowinfocus {
 }
 .windowhead {
   height: 30px;
+  padding: 0.8vh 0 0.3v h 0;
   color: #000000;
   background-color: #a0a0a0;
   border-bottom: 1px solid #c0c0c0;
 }
 div.windowinfocus div.windowhead {
   background-color: #a0a0a0;
+  padding: 0.8vh 0 0.3vh 0 ;
 }
 
 .modal {
   z-index: 20000;
+}
+.gpu-trigger{
+  margin-bottom: 6vh  ;
 }
 .spinneroverlay {
   width: 100%;
@@ -545,4 +550,9 @@ table#sessiondata td {
   .notifications .alert.hidden {
     transform: translateY(0) translateX(-10rem);
   }
+}
+
+
+.hover-effect:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust the color and opacity as needed */
 }

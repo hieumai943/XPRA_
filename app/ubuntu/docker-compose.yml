@@ -7,8 +7,8 @@ volumes:
       device: xpra_volume
 services:
   xpra:
-    image: hieuxfce
-    container_name: hieuxfce
+    image: hieutestxfce2
+    container_name: hieuxfce2
     hostname: xpra
     restart: always
     ports:

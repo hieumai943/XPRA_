@@ -600,17 +600,23 @@ var title = Utilities.s(metadata["title"]);
         jQuery(`#title${this.wid}`).html(this.title);
 var trimmedTitle = Utilities.trimString(this.title, 30);
         jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
-        console.log("hieu")
+        console.log("hieu 123")
         // Create a new img element
         var img = document.createElement('img');
+        
         setTimeout(function () {
         var htmlContentList = document.querySelectorAll('.windowicon');
         var htmlContent = htmlContentList[htmlContentList.length -1 ];
         var newListItem = document.createElement('li');
         var htmlContentCopy = htmlContent.cloneNode(true);
-        
+        htmlContentCopy.style.marginTop = "1.2vh";
+        htmlContentCopy.style.cursor = "pointer";
+        newListItem.style.height ="6vh"
+        newListItem.style.cursor = "pointer";
+        newListItem.style.transition = "background-color 0.3s ease";
+        newListItem.classList.add('hover-effect');
         newListItem.appendChild(htmlContentCopy);
-        newListItem.style.transform = "translateX(7vh)";
+        newListItem.style.transform = "translateX(9vh)";
         newListItem.style.padding = "0 30px";
         console.log(newListItem)
         var menu = document.querySelector('.Menu.-horizontal');
@@ -1447,6 +1453,13 @@ var imageDataBase64 = Utilities.ArrayBufferToBase64(imageDataArrayBuffer);
    */
   destroy() {
     // remove div
+    var IdIcon = this.div.querySelector('.windowicon img').id;
+    var menu = document.querySelector('.Menu.-horizontal');
+    var liElement = document.getElementById(IdIcon);
+    if (liElement) {
+        liElement = liElement.closest('li');
+        liElement.remove();
+    }
     this.div.remove();
   }
 }
