@@ -166,7 +166,7 @@ var fullscreen = (metadata["fullscreen"]) ?? false;
     if (this.client) this.client.exc.apply(this.client, arguments);
   }
   debug() {
-    if (this.client) this.client.debug.apply(this.client, arguments);
+    if (this.client) this.client.debug.apply(this.client, arguments); 
   }
 
   add_window_decorations() {
@@ -176,7 +176,7 @@ var wid = this.wid;
     // add a title bar to this window if we need to
     // create header
 var head =
-      `<div id="head${wid}" class="windowhead"> ` +
+      `<div id="head${wid}" class="windowhead" style="padding-bottom: 0.5vh;"> ` +
       `<span class="windowicon"><img class="windowicon" id="windowicon${wid}" /></span> ` +
       `<span class="windowtitle" id="title${wid}">${
         this.title

@@ -141,7 +141,7 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
-
+  
   .new_menu #uploadForm {
     display: flex;
     align-items: center;
@@ -414,6 +414,55 @@
   #startmenu li ul li {
     cursor: pointer;
   }
+  .new_menu_1 {
+    position: fixed;
+    top: 19vh;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center; 
+    z-index: 1000; 
+  }
+
+
+.new_menu_1 h2 {
+    margin-bottom: 20px;
+}
+
+.new_menu_1 .input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.new_menu_1 .input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.new_menu_1 .input-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.new_menu_1 button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.new_menu_1 button:hover {
+    background-color: #0056b3;
+}
 
   /* end calendar space  */
 </style>
@@ -587,6 +636,7 @@
       </label>
     </form>
   </div>
+</div>
 
   <div id="about">
     <h2>Xpra HTML5 Client</h2>
@@ -721,7 +771,36 @@
 
   <!-- end space -->
   <script>
-    // start self changing
+    document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                window.location.href = '/login.html';
+            } else {
+                // Optionally, you can add a function to validate the token with the server
+                validateToken(token).then(isValid => {
+                    if (!isValid) {
+                        window.location.href = '/login.html';
+                    }
+                });
+            }
+        });
+        async function validateToken(token) {
+            // Example validation function, replace with your actual validation logic
+            const response = await fetch('/validate-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            return response.ok;
+        }
+     const liElement = document.querySelector('#startmenu .-hasSubmenu');
+        
+        
+        // Set the src attribute of the <img> tag
+          console.log(liElement);
+        // start self changing
     let count = 0;
     document.querySelector('span.slider').addEventListener('click', function (event) {
       // day la doan xu ly theme
