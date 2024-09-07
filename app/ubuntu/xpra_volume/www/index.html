@@ -771,30 +771,30 @@
 
   <!-- end space -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-            const token = localStorage.getItem('authToken');
-            if (!token) {
-                window.location.href = '/login.html';
-            } else {
-                // Optionally, you can add a function to validate the token with the server
-                validateToken(token).then(isValid => {
-                    if (!isValid) {
-                        window.location.href = '/login.html';
-                    }
-                });
-            }
-        });
-        async function validateToken(token) {
-            // Example validation function, replace with your actual validation logic
-            const response = await fetch('/validate-token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            return response.ok;
-        }
+    // document.addEventListener("DOMContentLoaded", function() {
+    //         const token = localStorage.getItem('authToken');
+    //         if (!token) {
+    //             window.location.href = '/login.html';
+    //         } else {
+    //             // Optionally, you can add a function to validate the token with the server
+    //             validateToken(token).then(isValid => {
+    //                 if (!isValid) {
+    //                     window.location.href = '/login.html';
+    //                 }
+    //             });
+    //         }
+    //     });
+    //     async function validateToken(token) {
+    //         // Example validation function, replace with your actual validation logic
+    //         const response = await fetch('/validate-token', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         });
+    //         return response.ok;
+    //     }
      const liElement = document.querySelector('#startmenu .-hasSubmenu');
         
         

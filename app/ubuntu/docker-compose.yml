@@ -11,7 +11,16 @@ services:
     container_name: hieuxfce2
     hostname: xpra
     restart: always
-    ports:
-      - '9871:9876'
+    expose:
+      - '9876'
     volumes:
       - xpra_volume:/usr/share/xpra
+  nginx:
+    image: nginx
+    ports:
+      - "81:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+    depends_on:
+      - xpra
