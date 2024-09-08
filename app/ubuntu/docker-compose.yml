@@ -24,3 +24,11 @@ services:
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd
     depends_on:
       - xpra
+  auth_changer:
+    image: alpine
+    volumes:
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+      - ./change_auth.sh:/change_auth.sh
+      - ./auth_credentials.txt:/auth_credentials.txt
+      - ./init_auth_changer.sh:/init_auth_changer.sh
+    command: sh /init_auth_changer.sh
