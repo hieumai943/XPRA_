@@ -15,6 +15,13 @@ services:
       - '9876'
     volumes:
       - xpra_volume:/usr/share/xpra
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+    mem_limit: 2g
+    memswap_limit: 22g
   nginx:
     image: nginx
     ports:
