@@ -785,50 +785,51 @@
 
   <!-- end space -->
   <script>
-    // document.addEventListener("DOMContentLoaded", function() {
-    //         const token = localStorage.getItem('authToken');
-    //         if (!token) {
-    //             window.location.href = '/login.html';
-    //         } else {
-    //             // Optionally, you can add a function to validate the token with the server
-    //             validateToken(token).then(isValid => {
-    //                 if (!isValid) {
-    //                     window.location.href = '/login.html';
-    //                 }
-    //             });
-    //         }
-    //     });
-    //     async function validateToken(token) {
-    //         // Example validation function, replace with your actual validation logic
-    //         const response = await fetch('/validate-token', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         });
-    //         return response.ok;
-    //     }
-    const socket = new SockJS('http://localhost:8082/ws');
+function testDocker() {
+    fetch('http://localhost:8082/test-docker', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Received data:', data);
+        // Xử lý dữ liệu nhận được ở đây
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+function parseString(s) {
+    return s.slice(1, -1).split(", ").reduce((obj, pair) => {
+        const [key, value] = pair.split("=");
+        obj[key] = value.replace("%", "");
+        return obj;
+    }, {});
+}
+// Gọi hàm
+testDocker();
+
+const socket = new SockJS('http://localhost:8082/ws');
 const stompClient = Stomp.over(socket);
 
 stompClient.connect({}, function(frame) {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/topic/docker-stats', function(message) {
-        const stats = JSON.parse(message.body);
-        console.log('Memory Usage: ' + stats.memoryUsage);
-        console.log('CPU Usage: ' + stats.cpuUsage);
+      console.log("body la"+ message.body);
+      const data = parseString(message.body);
+      console.log('Memory Usage: ' + data.memoryUsage);
+      console.log('CPU Usage: ' + data.cpuUsage);
         // Ở đây bạn có thể cập nhật UI với dữ liệu nhận được
     });
 });
 
-// Hàm để gọi API
-function testDocker() {
-    fetch('/test-docker')
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-}
      const liElement = document.querySelector('#startmenu .-hasSubmenu');
         
         
