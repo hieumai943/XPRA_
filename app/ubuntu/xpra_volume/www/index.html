@@ -827,6 +827,12 @@ stompClient.connect({}, function(frame) {
       console.log('Memory Usage: ' + data.memoryUsage);
       console.log('CPU Usage: ' + data.cpuUsage);
         // Ở đây bạn có thể cập nhật UI với dữ liệu nhận được
+        if(parseFloat(data.cpuUsage) > 10){
+          alert("CPU Usage is over 50%");
+        }
+        if(parseFloat(data.memoryUsage) > 1){
+          alert("Memory Usage is over 50%");
+        }
     });
 });
 
