@@ -7,7 +7,7 @@ volumes:
       device: xpra_volume
 services:
   xpra:
-    image: hieutestxfce2
+    image: hieuxpra
     container_name: hieuxfce2
     hostname: xpra
     restart: always
@@ -22,21 +22,19 @@ services:
           memory: 1G
     mem_limit: 1g
     memswap_limit: 22g
-  nginx:
+  nginx2:
     image: nginx
-    container_name: nginx
+    container_name: nginx2
     ports:
-      - "81:80"
+      - 81:80
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+      - xpra_volume:/usr/share/xpra
     depends_on:
       - xpra
-  auth_changer:
-    image: alpine
-    volumes:
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
-      - ./change_auth.sh:/change_auth.sh
-      - ./auth_credentials.txt:/auth_credentials.txt
-      - ./init_auth_changer.sh:/init_auth_changer.sh
-    command: sh /init_auth_changer.sh

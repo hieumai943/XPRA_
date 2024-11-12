@@ -66,10 +66,9 @@ RUN apt-get update && apt-get install -y apt-utils \
     mousepad \
     thunar
 
-RUN mkdir -p /run/user/1000/xpra
-RUN mkdir -p /run/xpra
-RUN chown user:user /run/user/1000/xpra
-RUN chown user:user /run/xpra
+RUN mkdir -p /run/user/1000 && chown -R user:user /run/user/1000
+RUN mkdir -p /run/user/1000/xpra && chown -R user:user /run/user/1000/xpra
+RUN mkdir -p /run/xpra && chown -R user:user /run/xpra
 RUN echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Install CyberDuck CLI

@@ -786,7 +786,8 @@
   <!-- end space -->
   <script>
 function testDocker() {
-    fetch('http://localhost:8082/test-docker', {
+  const port = window.location.port;
+    fetch('http://localhost:8082/test-docker/'+ port, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -815,11 +816,17 @@ function parseString(s) {
 }
 // Gọi hàm
 testDocker();
+    if(localStorage.getItem('user_authen') == null){
+        window.location.href = '/connect.html'; // Redirect to login page
+    }
+       setTimeout(() => {
+          localStorage.removeItem('user_authen');
+          window.location.href = '/connect.html'; // Redirect to login page
+      }, 72000000); // 5s
+    const socket = new SockJS('http://localhost:8082/ws');
+    const stompClient = Stomp.over(socket);
 
-const socket = new SockJS('http://localhost:8082/ws');
-const stompClient = Stomp.over(socket);
-
-stompClient.connect({}, function(frame) {
+    stompClient.connect({}, function(frame) {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/topic/docker-stats', function(message) {
       console.log("body la"+ message.body);

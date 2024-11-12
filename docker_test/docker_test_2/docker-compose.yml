@@ -1,7 +1,0 @@
-version: '3.3'
-services:
-  hieuxpra:
-    image: hieumai943/hieutest:latest
-    container_name: xpratest
-    ports:
-      - '9852:9876'
