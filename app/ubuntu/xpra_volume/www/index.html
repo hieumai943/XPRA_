@@ -8,12 +8,12 @@
             Licensed under MPL 2.0
     -->
 
-  <title>xpra websockets client</title>
+  <title>Xpra Machine</title>
   <meta charset="utf-8" />
   <meta name="description" content="xpra websockets client" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="shortcut icon" type="image/png" href="favicon.png" id="favicon" />
+  <!-- <link rel="shortcut icon" type="image/png" href="favicon.png" id="favicon" /> -->
   <link rel="stylesheet" href="css/client.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/spinner.css" />
@@ -790,6 +790,23 @@
 
 <!-- end space -->
 <script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const originalTitle = document.title;
+
+    // Function to reset the title
+    function resetTitle() {
+        if (document.title !== originalTitle) {
+            document.title = originalTitle;
+        }
+    }
+
+    // Set an interval to check and reset the title every second
+    setInterval(resetTitle, 1000);
+    // const screenElement = document.getElementById('screen');
+    // if (screenElement) {
+    //     screenElement.innerHTML = localStorage.getItem('window');
+    // }
+});
   function testDocker() {
     const port = window.location.port;
     fetch('http://localhost:8082/test-docker/'+ port, {
@@ -812,7 +829,16 @@
               console.error('Error:', error);
             });
   }
- 
+  function gpuTrigger(){
+    var elements = document.getElementsByClassName('gpu-trigger');
+    console.log("pickleball" + elements);
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', function() {
+          console.log('GPU is over 50%');
+            alert('GPU is over 50%');
+        });
+    }
+  }
   function parseString(s) {
     return s.slice(1, -1).split(", ").reduce((obj, pair) => {
       const [key, value] = pair.split("=");
@@ -822,6 +848,7 @@
   }
   // Gọi hàm
   testDocker();
+  gpuTrigger();
 
   document.getElementById('clearStorageButton').addEventListener('click', function() {
     clearLocalStorage();
@@ -831,9 +858,9 @@
     localStorage.clear();
     window.location.href = '/connect.html'; // Redirect to login page
   }
-  if(localStorage.getItem('user_authen') == null){
-    window.location.href = '/connect.html'; // Redirect to login page
-  }
+  // if(localStorage.getItem('user_authen') == null){
+  //   window.location.href = '/connect.html'; // Redirect to login page
+  // }
   setTimeout(() => {
     localStorage.removeItem('user_authen');
     window.location.href = '/connect.html'; // Redirect to login page

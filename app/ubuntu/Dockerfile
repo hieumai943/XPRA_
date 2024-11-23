@@ -51,6 +51,7 @@ RUN apt-get update && \
 RUN apt-get update && apt-get install -y apt-utils \
     build-essential \
     firefox \
+    gdm3 \
     glances \
     glmark2 \
     gnome-shell \
@@ -59,16 +60,15 @@ RUN apt-get update && apt-get install -y apt-utils \
     htop \
     libqt5x11extras5 \
     linux-generic-hwe-18.04-edge \
+    nautilus \
     seahorse-nautilus \
     software-properties-common \
-    tasksel \
     libreoffice \
-    mousepad \
-    thunar
+    tasksel
 
-RUN mkdir -p /run/user/1000 && chown -R user:user /run/user/1000
-RUN mkdir -p /run/user/1000/xpra && chown -R user:user /run/user/1000/xpra
-RUN mkdir -p /run/xpra && chown -R user:user /run/xpra
+    RUN mkdir -p /run/user/1000 && chown -R user:user /run/user/1000
+    RUN mkdir -p /run/user/1000/xpra && chown -R user:user /run/user/1000/xpra
+    RUN mkdir -p /run/xpra && chown -R user:user /run/xpra
 RUN echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Install CyberDuck CLI
@@ -147,14 +147,7 @@ WORKDIR /home/user
 # add iRODS iCommands to user profile as JSON
 RUN mkdir /home/user/.irods && echo '{"irods_host": "data.cyverse.org", "irods_port": 1247, "irods_user_name": "$IPLANT_USER", "irods_zone_name": "iplant"}' | tee  > /home/user/.irods/irods_environment.json
 COPY xpra_volume/ /usr/share/xpra
-USER root
 
-RUN rm -f /usr/share/xpra/www/index.html.br 
-RUN rm -f /usr/share/xpra/www/css/menu.css.br
-RUN rm -f /usr/share/xpra/www/css/menu-skin.css.br
-RUN rm -f /usr/share/xpra/www/js/Window.js.br
-
-USER user
 
 EXPOSE 9876
 

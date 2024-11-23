@@ -22,9 +22,9 @@ services:
           memory: 1G
     mem_limit: 1g
     memswap_limit: 22g
-  nginx2:
+  nginx123:
     image: nginx
-    container_name: nginx2
+    container_name: nginx123
     ports:
       - 81:80
     deploy:

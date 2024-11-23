@@ -829,6 +829,6 @@ function console_warn_safe() {
 }
 
 function console_log_safe() {
-  
+  console.log("da add ne")
   if (console) console.log.apply(console, arguments);
 }

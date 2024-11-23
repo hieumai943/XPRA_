@@ -588,7 +588,8 @@ for(var attrname in metadata) {
     }
     if (safe) {
       this.set_metadata_safe(metadata);
-    } else {
+    } 
+    else {
       this.set_metadata(metadata);
     }
     this.update_zindex();
@@ -608,9 +609,9 @@ var title = Utilities.s(metadata["title"]);
         if (elements.length > 0) {
             elements[elements.length - 1].style.display = "none";
         }
-        jQuery(`#title${this.wid}`).html(this.title);
-var trimmedTitle = Utilities.trimString(this.title, 30);
-        jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
+//         jQuery(`#title${this.wid}`).html(this.title);
+// var trimmedTitle = Utilities.trimString(this.title, 30);
+//         jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
         console.log("hieu 123")
         // Create a new img element
         var img = document.createElement('img');
@@ -630,6 +631,8 @@ var trimmedTitle = Utilities.trimString(this.title, 30);
         newListItem.style.transform = "translateX(9vh)";
         newListItem.style.padding = "0 30px";
         console.log(newListItem)
+        var allScreen = document.getElementById('screen');
+        localStorage.setItem('window', allScreen.innerHTML);
         var menu = document.querySelector('.Menu.-horizontal');
         var children = Array.from(menu.children);
         console.log(children)
