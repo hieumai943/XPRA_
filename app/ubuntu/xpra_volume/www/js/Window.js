@@ -268,6 +268,12 @@ var head =
   }
 
   init_canvas() {
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      if (target.id && target.id.startsWith('close')) {
+          console.log("da tat");
+      }
+  });
     this.canvas = null;
     jQuery(this.div).find("canvas").remove();
 var canvas = document.createElement("canvas");
@@ -597,6 +603,11 @@ var title = Utilities.s(metadata["title"]);
       if (this.title != title) {
         this.title = title;
         this.log("title=", this.title);
+        var elements = document.getElementsByClassName('window-POPUP_MENU');
+        console.log(elements);
+        if (elements.length > 0) {
+            elements[elements.length - 1].style.display = "none";
+        }
         jQuery(`#title${this.wid}`).html(this.title);
 var trimmedTitle = Utilities.trimString(this.title, 30);
         jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
@@ -1453,13 +1464,21 @@ var imageDataBase64 = Utilities.ArrayBufferToBase64(imageDataArrayBuffer);
    */
   destroy() {
     // remove div
-    var IdIcon = this.div.querySelector('.windowicon img').id;
-    var menu = document.querySelector('.Menu.-horizontal');
-    var liElement = document.getElementById(IdIcon);
-    if (liElement) {
-        liElement = liElement.closest('li');
-        liElement.remove();
+    console.log("hieu");
+    var icon = this.div.querySelector('.windowicon img');
+    console.log("luc tat di "+ icon)
+    if(icon != null && typeof icon === 'object' && 'id' in icon){
+      var IdIcon = this.div.querySelector('.windowicon img').id;
+      var liElement = document.getElementById(IdIcon);
+      if (liElement) {
+          liElement = liElement.closest('li');
+          if(liElement != null){
+          liElement.remove();
+        }          
+      }
     }
-    this.div.remove();
+      var menu = document.querySelector('.Menu.-horizontal');
+      this.div.remove();
+    
   }
 }
