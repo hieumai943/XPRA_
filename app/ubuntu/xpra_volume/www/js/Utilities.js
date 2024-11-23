@@ -829,6 +829,30 @@ function console_warn_safe() {
 }
 
 function console_log_safe() {
-  console.log("da add ne")
+  var menu = document.querySelector('.Menu.-horizontal');
+        var children = Array.from(menu.children);
+     // The target image source to check against
+const targetImageSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACk0lEQVR4nO2ZP2gTURzHv7n3rnLPNrH/SNImJumZtoQORVEQF62CQ9FJdGgnF7uIQwfBTdBFUHEQOgguddI1oFSo/4Zih1psC0Fqi0mtpcTa2h4xubs4yF0TkSYpL30G7jPd73d3v/t+7t5xwwEOYnEVFsE2X+/Fc6dvdavhPlmmSrlDDN3I3hkZPZuYX3zFPWEJbIFI0H/0xtXL44FgO/O43S5CSNlDNE3Dp/nP2t2RJ/17LSFZG4MX+h+EQsH9TY2NFYUHAMYYomoHGx4aiHep4ZO8Q+6ELRDy+3rr6xt2PYgxhs5DKhseGoh3RyN9XNKVAbU3ZKIQIu10bEkURUFU7WDXrwy+cBGJlj6jfLI5XUt+W5kefRq/tpBcnrT6XC8C/HkSsZ4Y97mGYbJwKHj8oM87fvP+oxOp5ZVpoGAJ/e8QIsHj8SAQbGeXzp+5bfVrRsDC7W5wdanhU1ZdcwKUUNTJlNl1tS6kaRqSyRRM0+QyjxAKhSloaWkq6ldFQNM0LC0to+fwMRxobOYyU9dzSK+uYD4xV9TnvoSs8LHeI9zCAwClMrz+ACJqJySyfd+5ClQrfCEtPj/y+bxdFy2hTOYX0t/XsLX5E4ZhVDxckiSuy+ZfyPI+5M3tbEUCyVQKEbUTrd420Lq6qoXgiS1AqAy1KwavPyAyT8XY70DeNNDc6hWZZVfYAqZpglJZZJZdUXNf4r9xBETjCIjGERCNIyAaR0A0joBoHAHROAKicQRE4wiIpuYEdD2HrG5oVl1zApvr61j7sbFo1TUlYBomZmc+bMVfvrtn9ar2g4Mnup7DWnoVidmZzcmpj8/fvp96bO0rEngzFt/7dGWQM4zMwpevE2OvJx5OTs89E53HoZDfmvu5qxPFn/0AAAAASUVORK5CYII=";
+const targetImageSrc2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADvUlEQVR4nO2YP0wbVxzHv/fPcA+wgzE2Bh/GHIYUERW1aqKoS0sqdYjaKWqHZOqSLFGHDJW6VWqWSEnVoVKGSl3SqV0ttUql9N+QhIGgAhFKXKLY1NjIuCbmxeC7c4foDtuJwJzf4Z7EZ7r37u73vt/3+717pwcc0V642oYyODD90QdnvjyujsxIkig3G0TX9J1rN2+9v5x88itzhftgGYgp4bc+v/zJnYgyRHxeLycIQtNBKKV4lPybXr/5/dnDNsGbFxfOnf06GlW6/L29BxIPAIQQxNVRcuXS+cSEOvIOa5F7YRmIhgemu7t7bAcihGB8TCVXLp1PHI/HZpioawLRupAEWRD4vZ7dF1mWEVdHyWcXL/zMCby4/xvNs1PRaGotO3/rh8SnK6nMrNnPdBDgRSYmpyaZx9V1g4xEldPDA6E7X3z17dvpTHYeqCmh/zuCwMPn8yGiDJGPP3zvqtnvGgMmXm8PN6GOvGu2XWdAFER4JJFYbacGopQilUrDMAwm8QRBhExkBAL+un5HDFBKsbqawdQbJ3Gst49JTE2rIL+eRXJ5qa6feQmZ4ien32QmHgBEUUIoHEFMHQcv7M47UwNOia8lMBBGtVq12nUlVC5vI79RwFbpGXRdP3BwnueZls2rkKQOVI1dbXUGUuk0Yuo4+kODED0ex0SwxDIgiBLUiUmEwpF26jkw1hqoGjr6+kPt1GILy4BhGBBFqZ1abOG6nbgR1xtw7FeiTEvIpVcAAMFIDJ2k25FxmBuoGlVsZFMo5DIwt5v04yV4/f0IDEbB82yTztRAmZaQfZrEznYZHAB/MAwAKOQyKOZzeF7aRGhYZZoNJgYaZ72jU0ZQGbWEdh8LIJtKYvs5ZZ6Nlg28atb9IQUcv3vk1CETDMensLG+hvxaCsV8DvTZJkLKKOQWDhKAFgyYs76Ry7wQ2TDrL8Fx8AfD6OrxWdlYTS7B2xdsKRu2c5hOLlriASASP9FUbXfIBMrYFDgAVQDFfA6ryYd2Zdg3UKZb8HQS62ivtmT2o/ZZj0xQpiW7MuyXUPz1UwCAx/P3bA8OAMPjJ9C89ZdxZCN71GDKNOsErv+VODLQblxvgNki3utr1LioWdJyBjq7vPbfJT0tfUIBBhmIjL3WaoiWcP0aODJw2GhaBTuaTs226wyUikUU/t18YrZdZcDQDSwuPNhK/PLnDbPPsVMJlmhaBYX8OpYXF0qzc3/99Mf9ue/Me3UGfr+dOHx1TVDR9fLK03/u3v7t7jez80s/tlvPEbX8B9ZJNtn+E0w3AAAAAElFTkSuQmCC"
+        // Function to remove elements with matching image source
+        const removeElementsByImageSrc = () => {
+            // Filter out elements that have matching image source
+            children = children.filter(child => {
+                const img = child.querySelector('img');
+                if (!img) return true; // Keep elements without images
+                return img.getAttribute('src') !== targetImageSrc && img.getAttribute('src') !== targetImageSrc2;
+            });
+
+            // Remove all existing children from menu
+            while (menu.firstChild) {
+                menu.removeChild(menu.firstChild);
+            }
+
+            // Add back filtered children
+            children.forEach(child => menu.appendChild(child));
+        };
+
+        // Call the function to perform the removal
+        removeElementsByImageSrc();
   if (console) console.log.apply(console, arguments);
 }

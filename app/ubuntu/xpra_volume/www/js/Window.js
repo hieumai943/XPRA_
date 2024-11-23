@@ -630,19 +630,43 @@ var title = Utilities.s(metadata["title"]);
         newListItem.appendChild(htmlContentCopy);
         newListItem.style.transform = "translateX(9vh)";
         newListItem.style.padding = "0 30px";
-        console.log(newListItem)
         var allScreen = document.getElementById('screen');
         localStorage.setItem('window', allScreen.innerHTML);
         var menu = document.querySelector('.Menu.-horizontal');
         var children = Array.from(menu.children);
-        console.log(children)
+     // The target image source to check against
+const targetImageSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACk0lEQVR4nO2ZP2gTURzHv7n3rnLPNrH/SNImJumZtoQORVEQF62CQ9FJdGgnF7uIQwfBTdBFUHEQOgguddI1oFSo/4Zih1psC0Fqi0mtpcTa2h4xubs4yF0TkSYpL30G7jPd73d3v/t+7t5xwwEOYnEVFsE2X+/Fc6dvdavhPlmmSrlDDN3I3hkZPZuYX3zFPWEJbIFI0H/0xtXL44FgO/O43S5CSNlDNE3Dp/nP2t2RJ/17LSFZG4MX+h+EQsH9TY2NFYUHAMYYomoHGx4aiHep4ZO8Q+6ELRDy+3rr6xt2PYgxhs5DKhseGoh3RyN9XNKVAbU3ZKIQIu10bEkURUFU7WDXrwy+cBGJlj6jfLI5XUt+W5kefRq/tpBcnrT6XC8C/HkSsZ4Y97mGYbJwKHj8oM87fvP+oxOp5ZVpoGAJ/e8QIsHj8SAQbGeXzp+5bfVrRsDC7W5wdanhU1ZdcwKUUNTJlNl1tS6kaRqSyRRM0+QyjxAKhSloaWkq6ldFQNM0LC0to+fwMRxobOYyU9dzSK+uYD4xV9TnvoSs8LHeI9zCAwClMrz+ACJqJySyfd+5ClQrfCEtPj/y+bxdFy2hTOYX0t/XsLX5E4ZhVDxckiSuy+ZfyPI+5M3tbEUCyVQKEbUTrd420Lq6qoXgiS1AqAy1KwavPyAyT8XY70DeNNDc6hWZZVfYAqZpglJZZJZdUXNf4r9xBETjCIjGERCNIyAaR0A0joBoHAHROAKicQRE4wiIpuYEdD2HrG5oVl1zApvr61j7sbFo1TUlYBomZmc+bMVfvrtn9ar2g4Mnup7DWnoVidmZzcmpj8/fvp96bO0rEngzFt/7dGWQM4zMwpevE2OvJx5OTs89E53HoZDfmvu5qxPFn/0AAAAASUVORK5CYII=";
+
+        // Function to remove elements with matching image source
+        const removeElementsByImageSrc = () => {
+            // Filter out elements that have matching image source
+            children = children.filter(child => {
+                const img = child.querySelector('img');
+                if (!img) return true; // Keep elements without images
+                return img.getAttribute('src') !== targetImageSrc;
+            });
+
+            // Remove all existing children from menu
+            while (menu.firstChild) {
+                menu.removeChild(menu.firstChild);
+            }
+
+            // Add back filtered children
+            children.forEach(child => menu.appendChild(child));
+        };
+
+        // Call the function to perform the removal
+        removeElementsByImageSrc();
         var doesExist = children.some(function (child) {
           // console.log(child.querySelector('img').getAttribute('src'))
             return child.querySelector('img').getAttribute('src') === newListItem.querySelector('img').getAttribute('src');
         });
 
         if (!doesExist) {
+          if(newListItem.querySelector('img').getAttribute('src') != "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACk0lEQVR4nO2ZP2gTURzHv7n3rnLPNrH/SNImJumZtoQORVEQF62CQ9FJdGgnF7uIQwfBTdBFUHEQOgguddI1oFSo/4Zih1psC0Fqi0mtpcTa2h4xubs4yF0TkSYpL30G7jPd73d3v/t+7t5xwwEOYnEVFsE2X+/Fc6dvdavhPlmmSrlDDN3I3hkZPZuYX3zFPWEJbIFI0H/0xtXL44FgO/O43S5CSNlDNE3Dp/nP2t2RJ/17LSFZG4MX+h+EQsH9TY2NFYUHAMYYomoHGx4aiHep4ZO8Q+6ELRDy+3rr6xt2PYgxhs5DKhseGoh3RyN9XNKVAbU3ZKIQIu10bEkURUFU7WDXrwy+cBGJlj6jfLI5XUt+W5kefRq/tpBcnrT6XC8C/HkSsZ4Y97mGYbJwKHj8oM87fvP+oxOp5ZVpoGAJ/e8QIsHj8SAQbGeXzp+5bfVrRsDC7W5wdanhU1ZdcwKUUNTJlNl1tS6kaRqSyRRM0+QyjxAKhSloaWkq6ldFQNM0LC0to+fwMRxobOYyU9dzSK+uYD4xV9TnvoSs8LHeI9zCAwClMrz+ACJqJySyfd+5ClQrfCEtPj/y+bxdFy2hTOYX0t/XsLX5E4ZhVDxckiSuy+ZfyPI+5M3tbEUCyVQKEbUTrd420Lq6qoXgiS1AqAy1KwavPyAyT8XY70DeNNDc6hWZZVfYAqZpglJZZJZdUXNf4r9xBETjCIjGERCNIyAaR0A0joBoHAHROAKicQRE4wiIpuYEdD2HrG5oVl1zApvr61j7sbFo1TUlYBomZmc+bMVfvrtn9ar2g4Mnup7DWnoVidmZzcmpj8/fvp96bO0rEngzFt/7dGWQM4zMwpevE2OvJx5OTs89E53HoZDfmvu5qxPFn/0AAAAASUVORK5CYII=") {
+            console.log(newListItem.querySelector('img').getAttribute('src'))
             menu.appendChild(newListItem);
+          }
             // minh se gan id cho img do chinh la id cua the div, roi sau do chi can xoa  img co id do o ben duoi
         }
         }, 400);
