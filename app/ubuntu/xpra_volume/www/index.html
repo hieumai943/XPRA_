@@ -304,6 +304,7 @@
 
   /* calendar space */
   .calendar-container {
+    z-index: 99999;
     position: absolute;
     top: 20vh;
     display: none;
@@ -479,6 +480,14 @@
     display: none;
     background-color: white;
   }
+  .uploadfile {
+    display: flex !important;
+    padding: 5px 0 !important;
+  }
+  #uploadfile{
+    width: 22vw;;
+  }
+  
   /* end calendar space  */
 </style>
 
@@ -538,14 +547,12 @@
             <a class="bigmenu" href="#">
               <img id="start" src="./icons/server.png">
               Server</a>
-            <ul style="position: relative;
+            <ul id="uploadfile" style="position: relative;
                   down: -10%;
                   top: -5vh;">
-              <li id="clock_menu_entry"><a href="#" data-icon="access_time" onclick="return false"
+              <li  class="uploadfile" id="clock_menu_entry"><img  src="./icons/clockpng.png" alt=""><a href="#" data-icon="access_time" onclick="return false"
                                            id="clock_menu_text"></a></li>
-              <li><a href="#" data-icon="cloud_upload" onclick="upload_file(event); return false">Upload file</a></li>
-              <li><a href="#" data-icon="exit_to_app" onclick="confirm_shutdown_server(event); return false">Shutdown
-                Server</a></li>
+              <li class="uploadfile"><img  src="./icons/uploadfile.png" alt=""><a href="#" data-icon="cloud_upload" onclick="upload_file(event); return false">Upload file</a></li>
             </ul>
           </li>
           <!--
@@ -563,12 +570,12 @@
             <ul style="position: relative;
                   down: -10%;
                   top: -5vh;">
-              <li><a href="#" data-icon="info" onclick="show_about(event); return false">About
+              <li class="uploadfile"><img src="./icons/information.png"><a href="#" data-icon="info" onclick="show_about(event); return false">About
                 Xpra</a></li>
-              <li><a href="#" data-icon="trending_up" onclick="show_sessioninfo(event); return false">Session Info</a>
+              <li class="uploadfile"><img src="./icons/session.png"><a href="#" data-icon="trending_up" onclick="show_sessioninfo(event); return false">Session Info</a>
               </li>
-              <li><a href="#" data-icon="bug_report" onclick="show_bugreport(event); return false">Bug
-                Report</a></li>
+              <!-- <li><a href="#" data-icon="bug_report" onclick="show_bugreport(event); return false">Bug
+                Report</a></li> -->
             </ul>
           </li>
           <li style="padding: 20px 0;"><a href="#"
@@ -650,7 +657,7 @@
   <span class="theme">Dark Mode</span>
   <form id="theme">
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" >
       <span class="slider"></span>
     </label>
   </form>
@@ -790,14 +797,15 @@
 
 <!-- end space -->
 <script>
+
   document.addEventListener('DOMContentLoaded', (event) => {
     const originalTitle = document.title;
 
     // Function to reset the title
     function resetTitle() {
-        if (document.title !== originalTitle) {
-            document.title = originalTitle;
-        }
+      if (document.title !== originalTitle) {
+        document.title = originalTitle;
+      }
     }
 
     // Set an interval to check and reset the title every second
@@ -806,7 +814,15 @@
     // if (screenElement) {
     //     screenElement.innerHTML = localStorage.getItem('window');
     // }
-});
+    const checkbox = document.querySelector('#theme input[type="checkbox"]');
+    // Kiểm tra theme từ localStorage và set trạng thái checkbox
+    if(localStorage.getItem('theme') === 'dark') {
+        checkbox.checked = true;
+        handleDarkTheme();
+    } else {
+        checkbox.checked = false;
+    }
+  });
   function testDocker() {
     const port = window.location.port;
     fetch('http://localhost:8082/test-docker/'+ port, {
@@ -833,10 +849,10 @@
     var elements = document.getElementsByClassName('gpu-trigger');
     console.log("pickleball" + elements);
     for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', function() {
-          console.log('GPU is over 50%');
-            alert('GPU is over 50%');
-        });
+      elements[i].addEventListener('click', function() {
+        console.log('GPU is over 50%');
+        alert('GPU is over 50%');
+      });
     }
   }
   function parseString(s) {
@@ -847,6 +863,10 @@
     }, {});
   }
   // Gọi hàm
+
+//   else{
+//     document.querySelector('#theme input[type="checkbox"]').checked = false;
+//   }
   testDocker();
   gpuTrigger();
 
@@ -858,9 +878,41 @@
     localStorage.clear();
     window.location.href = '/connect.html'; // Redirect to login page
   }
-  // if(localStorage.getItem('user_authen') == null){
-  //   window.location.href = '/connect.html'; // Redirect to login page
-  // }
+  function handleDarkTheme(){
+   
+      localStorage.setItem('theme', 'dark');
+    document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f';
+      document.querySelector('li #calendar_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721706117/calendar_light_pbb32x.png';
+      document.querySelector('li #clearStorageButton img').src = './icons/turn-off-white.png';
+      document.getElementById('clock').style.color = 'white';
+      document.querySelector('.startLogo').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705704/xpra-logo_light_e3ngxb.png';
+      document.querySelector('li #fullscreen_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705944/expand_light_wdn9nw.png';
+      document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
+      document.querySelector('li #setting img').src = './icons/setting_light.png';
+      document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
+      document.querySelector('.calendar-container').style.backgroundColor = 'black';
+      document.querySelector('.calendar-container').style.color = 'white';
+      document.getElementById('calendar-prev').style.backgroundColor = '#ccc';
+      document.getElementById('calendar-next').style.backgroundColor = '#ccc';
+      document.getElementById('menu_list').style.backgroundColor = '#003049';
+      document.getElementById('menu_list').style.color = 'white';
+      var elements = document.querySelectorAll('#menu_list li ul');
+      elements.forEach(function (element) {
+        element.style.backgroundColor = '#003049';
+      });
+      var elements = document.querySelectorAll('#menu_list li ul');
+      elements.forEach(function (element) {
+        element.style.backgroundColor = '#003049';
+      });
+      var elements = document.querySelectorAll('#startmenu li ul');
+      elements.forEach(function (element) {
+        element.style.backgroundColor = '#003049';
+      });
+  }
+  if(localStorage.getItem('user_authen') == null){
+    window.location.href = '/connect.html'; // Redirect to login page
+  }
   setTimeout(() => {
     localStorage.removeItem('user_authen');
     window.location.href = '/connect.html'; // Redirect to login page
@@ -884,19 +936,16 @@
       }
     });
   });
-
   const liElement = document.querySelector('#startmenu .-hasSubmenu');
-
-
+ 
   // Set the src attribute of the <img> tag
   console.log(liElement);
   // start self changing
-  let count = 0;
   document.querySelector('span.slider').addEventListener('click', function (event) {
     // day la doan xu ly theme
-    count++;
-    if (count % 2 == 0) {
+    if (localStorage.getItem('theme') == 'dark'){
       //theme light
+      localStorage.setItem('theme', 'light');
       document.getElementById('float_menu').style.backgroundColor = 'rgba(139, 211, 230, 1)';
       document.querySelector('.new_menu').style.backgroundColor = 'white';
       document.querySelector('li #calendar_button img').src = './icons/calendar-day.png';
@@ -906,6 +955,7 @@
       document.querySelector('li #keyboard_button img').src = './icons/keyboard.png';
       document.querySelector('li #setting img').src = './icons/settings.png';
       document.querySelector('.new_menu #exitmenu img').src = './icons/logout.png';
+      document.querySelector('li #clearStorageButton img').src = './icons/turn-off.png';
       document.querySelector('.calendar-container').style.backgroundColor = 'white';
       document.querySelector('.calendar-container').style.color = 'black';
       document.getElementById('menu_list').style.backgroundColor = 'white';
@@ -921,31 +971,7 @@
     }
     else {
       //theme dark
-      document.getElementById('float_menu').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-      document.querySelector('.new_menu').style.backgroundColor = '#2f2f2f';
-      document.querySelector('li #calendar_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721706117/calendar_light_pbb32x.png';
-      document.getElementById('clock').style.color = 'white';
-      document.querySelector('.startLogo').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705704/xpra-logo_light_e3ngxb.png';
-      document.querySelector('li #fullscreen_button img').src = 'https://res.cloudinary.com/dlggnttqv/image/upload/v1721705944/expand_light_wdn9nw.png';
-      document.querySelector('li #keyboard_button img').src = './icons/keyboard_light.png';
-      document.querySelector('li #setting img').src = './icons/setting_light.png';
-      document.querySelector('.new_menu #exitmenu img').src = './icons/logout_light.png';
-      document.querySelector('.calendar-container').style.backgroundColor = 'black';
-      document.querySelector('.calendar-container').style.color = 'white';
-      document.getElementById('menu_list').style.backgroundColor = '#003049';
-      document.getElementById('menu_list').style.color = 'white';
-      var elements = document.querySelectorAll('#menu_list li ul');
-      elements.forEach(function (element) {
-        element.style.backgroundColor = '#003049';
-      });
-      var elements = document.querySelectorAll('#menu_list li ul');
-      elements.forEach(function (element) {
-        element.style.backgroundColor = '#003049';
-      });
-      var elements = document.querySelectorAll('#startmenu li ul');
-      elements.forEach(function (element) {
-        element.style.backgroundColor = '#003049';
-      });
+      handleDarkTheme();
     }
   });
   // xu ly phan icon duoi taskbar
@@ -2151,13 +2177,13 @@
         client._audio_start_stream();
         client._sound_start_receiving();
       }document.getElementById('clearStorageButton').addEventListener('click', function() {
-    clearLocalStorage();
-  });
+        clearLocalStorage();
+      });
 
-  function clearLocalStorage() {
-    localStorage.clear();
-    alert('Local storage cleared!');
-  }
+      function clearLocalStorage() {
+        localStorage.clear();
+        alert('Local storage cleared!');
+      }
     });
   }
 
@@ -2465,7 +2491,7 @@
     load_default_settings();
   });
   console.log("client.js loaded");
-
+  
 </script>
 </body>
 
