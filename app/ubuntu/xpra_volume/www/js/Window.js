@@ -606,16 +606,16 @@ var title = Utilities.s(metadata["title"]);
         this.log("title=", this.title);
         var elements = document.getElementsByClassName('window-POPUP_MENU');
         console.log(elements);
-        if (elements.length > 0) {
-            elements[elements.length - 1].style.display = "none";
-        }
+        // if (elements.length > 0) {
+        //   console.log(elements[elements.length - 1])
+        //   console.log("da xoa r nay")
+        //     elements[elements.length - 1].style.display = "none";
+        // }
 //         jQuery(`#title${this.wid}`).html(this.title);
 // var trimmedTitle = Utilities.trimString(this.title, 30);
 //         jQuery(`#windowlistitemtitle${this.wid}`).text(trimmedTitle);
-        console.log("hieu 123")
         // Create a new img element
         var img = document.createElement('img');
-        
         setTimeout(function () {
         var htmlContentList = document.querySelectorAll('.windowicon');
         var htmlContent = htmlContentList[htmlContentList.length -1 ];
